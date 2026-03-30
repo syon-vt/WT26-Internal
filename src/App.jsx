@@ -11,7 +11,7 @@ const MAIN_DATA = [
   { id: 7, name: "G", ans: [5, 5, 1, 2, 3] },
   { id: 8, name: "H", ans: [4, 4, 4, 4, 4] },
   { id: 9, name: "I", ans: [2, 1, 2, 5, 4] },
-  { id: 10, name: "J", ans: [3, 5, 3, 1, 5] }
+  { id: 0, name: "J", ans: [3, 5, 3, 1, 5] }
 ]
 
 const QUESTIONS = [
@@ -97,26 +97,28 @@ function App() {
       <div className="container leaderboard-page">
         <h1>Global Leaderboard</h1>
         <p className="subtitle">See how many people match with each board member.</p>
-        
+
         {isLoading ? (
           <p>Loading counts...</p>
         ) : (
-          <table className="leaderboard-table">
-            <thead>
-              <tr>
-                <th>Board Member</th>
-                <th>Matches</th>
-              </tr>
-            </thead>
-            <tbody>
-              {MAIN_DATA.map(member => (
-                <tr key={member.id}>
-                  <td>{member.name}</td>
-                  <td>{leaderboard[member.id] || 0}</td>
+          <div className="leaderboard-table-container">
+            <table className="leaderboard-table">
+              <thead>
+                <tr>
+                  <th>Board Member</th>
+                  <th>Matches</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {MAIN_DATA.map(member => (
+                  <tr key={member.id}>
+                    <td>{member.name}</td>
+                    <td>{leaderboard[member.id] || 0}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         )}
 
         <div className="nav-group">
@@ -134,7 +136,7 @@ function App() {
         <h1>Your Top Match</h1>
         <div className="result-card">
           <h2>{topMatch.name}</h2>
-          <p className="distance-label">Distance: <strong>{topMatch.distance.toFixed(2)}</strong></p>
+          {/* <p className="distance-label">Distance: <strong>{topMatch.distance.toFixed(2)}</strong></p> */}
           <div className="match-details">
             <p>This personality segment most closely aligns with your responses.</p>
           </div>
@@ -160,8 +162,8 @@ function App() {
   return (
     <div className="container">
       <h1>Similarity Form</h1>
-      <p className="subtitle">Answer the boilerplate questions to find your closest match.</p>
-      
+      <p className="subtitle">Answer the questions to find your closest match.</p>
+
       {error && <p className="error-message">{error}</p>}
 
       <form onSubmit={handleSubmit}>
@@ -186,7 +188,7 @@ function App() {
         ))}
         <button type="submit" className="submit-btn">Find My Match</button>
       </form>
-      
+
       <div className="nav-group center">
         <button className="link-btn" onClick={() => {
           setView('leaderboard')
