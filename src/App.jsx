@@ -13,7 +13,7 @@ function App() {
   const [userName, setUserName] = useState('')
   const [topMatch, setTopMatch] = useState(null)
   const [view, setView] = useState(() => {
-    return window.location.pathname === '/admin' ? 'admin' : 'nameEntry'
+    return window.location.pathname === '/admin' ? 'admin' : 'intro'
   })
   const [error, setError] = useState('')
   const [expandedMemberId, setExpandedMemberId] = useState(null)
@@ -117,6 +117,54 @@ function App() {
           setView('leaderboard');
         }}
       />
+    );
+  }
+
+  if (view === 'intro') {
+    return (
+      <div className="container magical-intro">
+        <div className="sparkle-container">
+          <div className="sparkle"></div>
+          <div className="sparkle"></div>
+          <div className="sparkle"></div>
+        </div>
+        
+        <div className="intro-content">
+          <div className="logo-placeholder">
+            <span className="crystal-ball">🔮</span>
+          </div>
+          
+          <h1 className="magical-title">Spirit Board Matcher</h1>
+          <p className="subtitle">
+            In the cosmic digital garden, who is your kindred spirit? 
+            Answer the ancient questions of the board to reveal your destiny.
+          </p>
+  
+          <div className="intro-features">
+            <div className="feature-item">
+              <span className="icon">📜</span>
+              <p>20 Soul-Searching Questions</p>
+            </div>
+            <div className="feature-item">
+              <span className="icon">⚡</span>
+              <p>Advanced Matching Logic</p>
+            </div>
+            <div className="feature-item">
+              <span className="icon">🌐</span>
+              <p>Global Board Leaderboard</p>
+            </div>
+          </div>
+  
+          <button className="submit-btn start-journey-btn" onClick={() => setView('nameEntry')}>
+            Enter the Realm
+            <span className="btn-sparkle">✨</span>
+          </button>
+        </div>
+  
+        <div className="intro-footer">
+          <p>GDG Internal Project • 2026</p>
+        </div>
+      </div>
     );
   }
 

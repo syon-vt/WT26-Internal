@@ -595,3 +595,135 @@ button {
   font-style: italic;
   margin: 0;
 }
+/* Magical Intro Layout */
+.magical-intro {
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  padding: 4rem 2.5rem;
+}
+
+.intro-content {
+  position: relative;
+  z-index: 2;
+}
+
+.magical-title {
+  margin-top: 1rem;
+  font-size: 3rem;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+}
+
+.logo-placeholder {
+  font-size: 5rem;
+  margin-bottom: 0.5rem;
+  filter: drop-shadow(0 0 20px rgba(66, 133, 244, 0.4));
+  animation: float 3s ease-in-out infinite;
+}
+
+.intro-features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 3rem 0;
+  text-align: center;
+}
+
+.feature-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: var(--bg-soft);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  transition: transform 0.2s;
+}
+
+.feature-item:hover {
+  transform: translateY(-5px);
+  border-color: var(--text-light);
+}
+
+.feature-item .icon {
+  font-size: 1.5rem;
+}
+
+.feature-item p {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-light);
+  line-height: 1.3;
+}
+
+.start-journey-btn {
+  padding: 1.25rem 2.5rem;
+  font-size: 1.2rem;
+  border-radius: 50px;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-sparkle {
+  margin-left: 0.5rem;
+}
+
+.intro-footer {
+  margin-top: 3rem;
+  font-size: 0.8rem;
+  color: var(--text-light);
+  opacity: 0.5;
+}
+
+/* Magical Particles */
+.sparkle-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.sparkle {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, rgba(66, 133, 244, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(20px);
+}
+
+.sparkle:nth-child(1) { top: 10%; left: 10%; animation: drift 10s linear infinite; }
+.sparkle:nth-child(2) { bottom: 10%; right: 10%; animation: drift 12s linear infinite reverse; }
+.sparkle:nth-child(3) { top: 40%; left: 50%; animation: drift 15s linear infinite; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes drift {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(50px, 30px); }
+  50% { transform: translate(20px, 60px); }
+  75% { transform: translate(-30px, 20px); }
+  100% { transform: translate(0, 0); }
+}
+
+@media (max-width: 640px) {
+  .magical-title {
+    font-size: 2.25rem;
+  }
+  
+  .intro-features {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  
+  .intro-content .subtitle {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+}
