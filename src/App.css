@@ -131,3 +131,65 @@ tr:hover {
 .back-btn:hover {
   background-color: #5a6268;
 }
+
+.error-message {
+  color: #dc3545;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  padding: 0.75rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.leaderboard-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  text-align: left;
+}
+
+.leaderboard-table th, .leaderboard-table td {
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.leaderboard-table th {
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+.nav-group {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.nav-group.center {
+  margin-top: 2rem;
+  border-top: 1px solid #eee;
+  padding-top: 2rem;
+}
+
+.leaderboard-btn {
+  background-color: #28a745;
+}
+
+.leaderboard-btn:hover {
+  background-color: #218838;
+}
+
+.link-btn {
+  background: none;
+  border: none;
+  color: #007bff;
+  text-decoration: underline;
+  padding: 0;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.link-btn:hover {
+  color: #0056b3;
+  background: none;
+}

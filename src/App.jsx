@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 
 const MAIN_DATA = [
@@ -23,9 +23,44 @@ const QUESTIONS = [
 ]
 
 function App() {
-  const [responses, setResponses] = useState([3, 3, 3, 3, 3])
+  const [responses, setResponses] = useState([null, null, null, null, null])
   const [topMatch, setTopMatch] = useState(null)
-  const [view, setView] = useState('form') // 'form' or 'result'
+  const [view, setView] = useState('form') // 'form', 'result', 'leaderboard'
+  const [error, setError] = useState('')
+  const [leaderboard, setLeaderboard] = useState({})
+  const [isLoading, setIsLoading] = useState(false)
+
+  const fetchLeaderboard = async () => {
+    setIsLoading(true)
+    try {
+      const res = await fetch('/api/leaderboard')
+      if (!res.ok) throw new Error('API not available')
+      const data = await res.json()
+      setLeaderboard(data)
+    } catch (err) {
+      console.warn('Backend API not found, falling back to LocalStorage')
+      const localData = JSON.parse(localStorage.getItem('local_leaderboard') || '{}')
+      setLeaderboard(localData)
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  const updateMatchCount = async (id) => {
+    try {
+      const res = await fetch('/api/leaderboard', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id })
+      })
+      if (!res.ok) throw new Error('API not available')
+    } catch (err) {
+      console.warn('Backend API not found, updating LocalStorage')
+      const localData = JSON.parse(localStorage.getItem('local_leaderboard') || '{}')
+      localData[id] = (localData[id] || 0) + 1
+      localStorage.setItem('local_leaderboard', JSON.stringify(localData))
+    }
+  }
 
   const calculateSimilarity = (resp) => {
     const scores = MAIN_DATA.map(item => {
@@ -34,22 +69,63 @@ function App() {
       )
       return { ...item, distance }
     })
-    // Sort and get the one with the least distance
     const sorted = scores.sort((a, b) => a.distance - b.distance)
     return sorted[0]
   }
 
   const handleInputChange = (index, value) => {
+    setError('')
     const newResponses = [...responses]
     newResponses[index] = parseInt(value)
     setResponses(newResponses)
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
+    if (responses.includes(null)) {
+      setError('Please answer all questions before submitting.')
+      return
+    }
     const bestMatch = calculateSimilarity(responses)
     setTopMatch(bestMatch)
     setView('result')
+    await updateMatchCount(bestMatch.id)
+  }
+
+  if (view === 'leaderboard') {
+    return (
+      <div className="container leaderboard-page">
+        <h1>Global Leaderboard</h1>
+        <p className="subtitle">See how many people match with each board member.</p>
+        
+        {isLoading ? (
+          <p>Loading counts...</p>
+        ) : (
+          <table className="leaderboard-table">
+            <thead>
+              <tr>
+                <th>Board Member</th>
+                <th>Matches</th>
+              </tr>
+            </thead>
+            <tbody>
+              {MAIN_DATA.map(member => (
+                <tr key={member.id}>
+                  <td>{member.name}</td>
+                  <td>{leaderboard[member.id] || 0}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+
+        <div className="nav-group">
+          <button className="back-btn" onClick={() => setView('form')}>
+            Back to Form
+          </button>
+        </div>
+      </div>
+    )
   }
 
   if (view === 'result' && topMatch) {
@@ -63,9 +139,20 @@ function App() {
             <p>This personality segment most closely aligns with your responses.</p>
           </div>
         </div>
-        <button className="back-btn" onClick={() => setView('form')}>
-          Back to Form
-        </button>
+        <div className="nav-group">
+          <button className="back-btn" onClick={() => {
+            setView('form')
+            setResponses([null, null, null, null, null])
+          }}>
+            Start Over
+          </button>
+          <button className="leaderboard-btn" onClick={() => {
+            setView('leaderboard')
+            fetchLeaderboard()
+          }}>
+            View Leaderboard
+          </button>
+        </div>
       </div>
     )
   }
@@ -74,6 +161,9 @@ function App() {
     <div className="container">
       <h1>Similarity Form</h1>
       <p className="subtitle">Answer the boilerplate questions to find your closest match.</p>
+      
+      {error && <p className="error-message">{error}</p>}
+
       <form onSubmit={handleSubmit}>
         {QUESTIONS.map((q, idx) => (
           <div key={idx} className="question-group">
@@ -96,6 +186,15 @@ function App() {
         ))}
         <button type="submit" className="submit-btn">Find My Match</button>
       </form>
+      
+      <div className="nav-group center">
+        <button className="link-btn" onClick={() => {
+          setView('leaderboard')
+          fetchLeaderboard()
+        }}>
+          View Global Leaderboard
+        </button>
+      </div>
     </div>
   )
 }
