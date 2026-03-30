@@ -431,3 +431,142 @@ button {
     margin-left: auto;
   }
 }
+
+/* Name Entry Styles */
+.name-input {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 1.1rem;
+  font-family: inherit;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-sizing: border-box;
+}
+
+.name-input:focus {
+  outline: none;
+  border-color: #4285f4;
+  box-shadow: 0 0 0 3px rgba(66, 133, 244, 0.1);
+  background: var(--bg-soft);
+}
+
+/* Submitted / Completed Row styles */
+.session-row.is-submitted {
+  opacity: 0.4;
+  filter: grayscale(100%);
+  transition: all 0.5s ease;
+}
+
+.session-row.is-submitted .progress-bar-fill {
+  background: var(--text-light);
+}
+
+.session-row.is-submitted .progress-text {
+  color: var(--text-light);
+}
+
+/* Leaderboard Expandable UI */
+.leaderboard-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.leaderboard-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.leaderboard-card:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.leaderboard-card.expanded {
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  transform: none;
+}
+
+.leaderboard-card-header {
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.leaderboard-card-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.leaderboard-card-info .rank {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #4285f4;
+  opacity: 0.8;
+}
+
+.leaderboard-card-info .name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.count {
+  font-size: 0.95rem;
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.chevron {
+  font-size: 0.8rem;
+  opacity: 0.6;
+}
+
+.leaderboard-card-details {
+  border-top: 1px solid var(--border);
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.2);
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.matched-names-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.matched-name-tag {
+  background: rgba(66, 133, 244, 0.15);
+  border: 1px solid rgba(66, 133, 244, 0.3);
+  color: #a8c7fa;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.empty-state {
+  color: var(--text-light);
+  font-style: italic;
+  margin: 0;
+}
