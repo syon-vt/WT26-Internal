@@ -1,7 +1,3 @@
-# GDG Internal Leaderboard & Similarity Form
-
-A highly interactive, real-time participant tracking and calculation application built for live events. This platform allows users to take a similarity quiz, matches them with top candidates using custom Euclidean distance algorithms, and globally syncs results across a Live Admin Dashboard and Global Leaderboard.
-
 ## Tech Stack
 
 - **Frontend Configuration:** [React 18](https://react.dev/) + [Vite](https://vitejs.dev/)

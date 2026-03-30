@@ -12,9 +12,9 @@ export const MAIN_DATA = [
 ];
 
 export const QUESTIONS = [
-  "How much do you enjoy working in a team?",
-  "How often do you prefer remote work over office work?",
-  "How much do you value technical excellence over delivery speed?",
-  "How interested are you in learning new technologies?",
-  "How much do you prioritize career growth over work-life balance?"
+  { text: "How much do you enjoy working in a team?", weight: 1 },
+  { text: "How often do you prefer remote work over office work?", weight: 1 },
+  { text: "How much do you value technical excellence over delivery speed?", weight: 1 },
+  { text: "How interested are you in learning new technologies?", weight: 1 },
+  { text: "How much do you prioritize career growth over work-life balance?", weight: 1 }
 ];

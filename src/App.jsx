@@ -32,7 +32,7 @@ function App() {
   const calculateSimilarity = (resp) => {
     const scores = MAIN_DATA.map(item => {
       const distance = Math.sqrt(
-        item.ans.reduce((sum, val, idx) => sum + Math.pow(resp[idx] - val, 2), 0)
+        item.ans.reduce((sum, val, idx) => sum + (QUESTIONS[idx].weight * Math.pow(resp[idx] - val, 2)), 0)
       )
       return { ...item, distance }
     })

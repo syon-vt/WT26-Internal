@@ -11,7 +11,7 @@ const QuizForm = ({ QUESTIONS, responses, handleInputChange, onSubmit, error, on
       <form onSubmit={onSubmit}>
         {QUESTIONS.map((q, idx) => (
           <div key={idx} className="question-group">
-            <label>{q}</label>
+            <label>{q.text}</label>
             <div className="radio-group">
               {[1, 2, 3, 4, 5].map(val => (
                 <label key={val}>
