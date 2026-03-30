@@ -314,3 +314,120 @@ button {
     font-size: 0.95rem;
   }
 }
+
+/* Admin Dashboard Styles */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.stat-card {
+  background: var(--bg);
+  padding: 2rem;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  border-color: #4285f4;
+}
+
+.stat-card h3 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.stat-card p {
+  color: var(--text-light);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.8rem;
+}
+
+.live-sessions {
+  background: var(--bg);
+  padding: 2rem;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  margin-bottom: 2rem;
+}
+
+.progress-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.session-row {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.session-id {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: var(--text-light);
+  min-width: 80px;
+}
+
+.progress-bar-container {
+  flex: 1;
+  height: 12px;
+  background: var(--bg-soft);
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: var(--primary-gradient);
+  border-radius: 10px;
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.progress-text {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text);
+  min-width: 40px;
+  text-align: right;
+}
+
+.link-btn.small {
+  font-size: 0.8rem;
+  opacity: 0.6;
+  margin-top: 1rem;
+}
+
+.link-btn.small:hover {
+  opacity: 1;
+}
+
+@media (max-width: 640px) {
+  .session-row {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .progress-bar-container {
+    order: 3;
+    flex: 1 1 100%;
+  }
+  
+  .progress-text {
+    margin-left: auto;
+  }
+}

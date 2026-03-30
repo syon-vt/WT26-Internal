@@ -22,6 +22,8 @@ const QUESTIONS = [
   "How much do you prioritize career growth over work-life balance?"
 ]
 
+const SESSION_ID = Math.random().toString(36).substring(2, 10);
+
 function App() {
   const [responses, setResponses] = useState([null, null, null, null, null])
   const [topMatch, setTopMatch] = useState(null)
@@ -29,6 +31,37 @@ function App() {
   const [error, setError] = useState('')
   const [leaderboard, setLeaderboard] = useState({})
   const [isLoading, setIsLoading] = useState(false)
+  const [liveData, setLiveData] = useState({ totalActive: 0, sessions: [] })
+
+  // Live progress tracking
+  const updateLiveProgress = async (prog) => {
+    try {
+      await fetch('/api/live', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ sessionId: SESSION_ID, progress: prog })
+      });
+    } catch (err) {
+      console.warn('Live tracking failed, silent error');
+    }
+  }
+
+  const fetchLiveData = async () => {
+    try {
+      const res = await fetch('/api/live');
+      if (res.ok) {
+        const data = await res.json();
+        setLiveData(data);
+      }
+    } catch (err) {
+      console.error('Failed to fetch live data');
+    }
+  }
+
+  useEffect(() => {
+    // Report initial progress (0)
+    updateLiveProgress(0);
+  }, []);
 
   const fetchLeaderboard = async () => {
     setIsLoading(true)
@@ -78,6 +111,10 @@ function App() {
     const newResponses = [...responses]
     newResponses[index] = parseInt(value)
     setResponses(newResponses)
+
+    // Update live progress (total answered)
+    const answeredCount = newResponses.filter(r => r !== null).length;
+    updateLiveProgress(answeredCount);
   }
 
   const handleSubmit = async (e) => {
@@ -130,6 +167,58 @@ function App() {
     )
   }
 
+  if (view === 'admin') {
+    return (
+      <div className="container admin-page">
+        <h1>Live Admin Dashboard</h1>
+        <p className="subtitle">Real-time participant tracking</p>
+        
+        <div className="stats-grid">
+          <div className="stat-card">
+            <h3>{liveData.totalActive}</h3>
+            <p>Active Participants</p>
+          </div>
+          <div className="stat-card">
+            <h3>{QUESTIONS.length}</h3>
+            <p>Total Questions</p>
+          </div>
+        </div>
+
+        <div className="live-sessions">
+          <h2>Progress Breakdown</h2>
+          <div className="progress-list">
+            {liveData.sessions.map((session, sIdx) => {
+              const currentProgress = (session.progress / QUESTIONS.length) * 100;
+              return (
+                <div key={session.id} className="session-row">
+                  <span className="session-id">User {session.id.substring(0, 4)}</span>
+                  <div className="progress-bar-container">
+                    <div 
+                      className="progress-bar-fill" 
+                      style={{ width: `${currentProgress}%` }}
+                    />
+                  </div>
+                  <span className="progress-text">{session.progress}/{QUESTIONS.length}</span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="nav-group center">
+          <button className="back-btn" onClick={() => setView('form')}>
+            Back to Form
+          </button>
+          <button className="leaderboard-btn" onClick={() => {
+            fetchLiveData();
+          }}>
+            Refresh Live View
+          </button>
+        </div>
+      </div>
+    )
+  }
+
   if (view === 'result' && topMatch) {
     return (
       <div className="container result-page">
@@ -148,6 +237,7 @@ function App() {
           }}>
             Start Over
           </button>
+
           <button className="leaderboard-btn" onClick={() => {
             setView('leaderboard')
             fetchLeaderboard()
@@ -195,6 +285,12 @@ function App() {
           fetchLeaderboard()
         }}>
           View Global Leaderboard
+        </button>
+        <button className="link-btn small" onClick={() => {
+          setView('admin')
+          fetchLiveData()
+        }}>
+          Admin Login
         </button>
       </div>
     </div>
