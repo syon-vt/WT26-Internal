@@ -1,18 +1,36 @@
-# React + Vite
+# GDG Internal Leaderboard & Similarity Form
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A highly interactive, real-time participant tracking and calculation application built for live events. This platform allows users to take a similarity quiz, matches them with top candidates using custom Euclidean distance algorithms, and globally syncs results across a Live Admin Dashboard and Global Leaderboard.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Frontend Configuration:** [React 18](https://react.dev/) + [Vite](https://vitejs.dev/)
+- **Backend Architecture:** [Vercel Serverless Functions](https://vercel.com/docs/functions/serverless-functions) (`/api`)
+- **Real-Time Database:** [Vercel KV (Redis)](https://vercel.com/storage/kv)
+- **Deployment & Routing:** Optimized natively for Vercel Cloud Serverless deployments (Zero-Downtime Polling)
 
-## React Compiler
+<br/>
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+## Repository Architecture
 
-Note: This will impact Vite dev & build performances.
+This codebase strictly utilizes a **Container-Presenter design pattern** to protect backend database hooks from frontend UI style collisions.
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```text
+GDG-Internal
+ |-- api/                    # Vercel Serverless Backend Routes
+ |   |-- leaderboard.js      # Global matches logic (Redis Set operations)
+ |   |-- live.js             # Admin real-time tracking operations
+ |-- src/
+ |   |-- components/         # The "UI Brawn" - 100% logic-free HTML/CSS views
+ |   |   |-- AdminDashboard.jsx  # Live participant progress tracker & Reset Controls
+ |   |   |-- Leaderboard.jsx     # Recursive expandable user grid
+ |   |   |-- NameEntry.jsx       # Introductory splash screen
+ |   |   |-- QuizForm.jsx        # Dynamic quiz engine and radio grids
+ |   |   |-- ResultCard.jsx      # Final presentation and target calculation
+ |   |-- hooks/              # The "Backend Bridge"
+ |   |   |-- useVercelDatabase.js # Core polling timeouts & abstract fetch requests
+ |   |-- App.jsx             # The "Logic Brain" - Global state & dynamic router
+ |   |-- constants.js        # Hardcoded system logic (Quiz questions & target matrix)
+ |   |-- index.css / App.css # Main style definitions 
+ |-- vercel.json             # Vercel CDN Rewrite map for React SPA Router
+```

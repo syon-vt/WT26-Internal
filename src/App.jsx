@@ -1,12 +1,12 @@
-import { useState, useEffect } from 'react'
-import './App.css'
+import { useVercelDatabase } from './hooks/useVercelDatabase'
+import AdminDashboard from './components/AdminDashboard'
+import Leaderboard from './components/Leaderboard'
+import { MAIN_DATA, QUESTIONS } from './constants'
+import ResultCard from './components/ResultCard'
 import NameEntry from './components/NameEntry'
 import QuizForm from './components/QuizForm'
-import ResultCard from './components/ResultCard'
-import Leaderboard from './components/Leaderboard'
-import AdminDashboard from './components/AdminDashboard'
-import { useVercelDatabase } from './hooks/useVercelDatabase'
-import { MAIN_DATA, QUESTIONS } from './constants'
+import { useState, useEffect } from 'react'
+import './App.css'
 
 function App() {
   const [responses, setResponses] = useState([null, null, null, null, null])
