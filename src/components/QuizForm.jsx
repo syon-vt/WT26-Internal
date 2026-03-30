@@ -12,19 +12,23 @@ const QuizForm = ({ QUESTIONS, responses, handleInputChange, onSubmit, error, on
         {QUESTIONS.map((q, idx) => (
           <div key={idx} className="question-group">
             <label>{q.text}</label>
-            <div className="radio-group">
-              {[1, 2, 3, 4, 5].map(val => (
-                <label key={val}>
-                  <input
-                    type="radio"
-                    name={`q${idx}`}
-                    value={val}
-                    checked={responses[idx] === val}
-                    onChange={(e) => handleInputChange(idx, e.target.value)}
-                  />
-                  {val}
-                </label>
-              ))}
+            <div className="radio-group-wrapper">
+              <span className="likert-label min">{q.minLabel}</span>
+              <div className="radio-group">
+                {[1, 2, 3, 4, 5].map(val => (
+                  <label key={val}>
+                    <input
+                      type="radio"
+                      name={`q${idx}`}
+                      value={val}
+                      checked={responses[idx] === val}
+                      onChange={(e) => handleInputChange(idx, e.target.value)}
+                    />
+                    {val}
+                  </label>
+                ))}
+              </div>
+              <span className="likert-label max">{q.maxLabel}</span>
             </div>
           </div>
         ))}

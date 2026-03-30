@@ -56,10 +56,35 @@ h1 {
   font-size: 1.05rem;
 }
 
+.radio-group-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.likert-label {
+  font-size: 0.8rem;
+  color: #888;
+  font-weight: 500;
+  max-width: 80px;
+  line-height: 1.2;
+}
+
+.likert-label.min {
+  text-align: left;
+}
+
+.likert-label.max {
+  text-align: right;
+}
+
 .radio-group {
   display: flex;
   justify-content: space-between;
   gap: 0.5rem;
+  flex: 1;
 }
 
 .radio-group label {
