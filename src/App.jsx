@@ -1,23 +1,23 @@
 import QuizForm from './components/QuizForm'
 import F1 from './components/f1'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import './App.css'
 import { useVercelDatabase } from './hooks/useVercelDatabase'
 import AdminDashboard from './components/AdminDashboard'
-import Leaderboard from './components/Leaderboard'
+import Leaderboard from './components/Leaderboard1'
 import { MAIN_DATA, QUESTIONS } from './constants'
 import ResultCard from './components/ResultCard'
-import NameEntry from './components/NameEntry'
-import './App.css'
+import CreepySlide from './components/CreepySlide'
 
 function App() {
-  const [responses, setResponses] = useState([null, null, null, null, null])
+  const [responses, setResponses] = useState(new Array(20).fill(null))
   const [userName, setUserName] = useState('')
   const [topMatch, setTopMatch] = useState(null)
-  
-const [view, setView] = useState(() => {
-  return window.location.pathname === '/admin' ? 'admin' : 'f1'
-})
+
+  const [view, setView] = useState(() => {
+    return window.location.pathname === '/admin' ? 'admin' : 'f1'
+  })
+
   const [error, setError] = useState('')
   const [expandedMemberId, setExpandedMemberId] = useState(null)
 
@@ -34,6 +34,7 @@ const [view, setView] = useState(() => {
 
   const calculateSimilarity = (resp) => {
     const scores = MAIN_DATA.map(item => {
+<<<<<<< HEAD
       const distance = item.ans.reduce((sum, val, idx) => {
         return sum + (QUESTIONS[idx].weight * Math.abs(resp[idx] - val));
       }, 0);
@@ -41,6 +42,18 @@ const [view, setView] = useState(() => {
     });
     const sorted = scores.sort((a, b) => a.distance - b.distance);
     return sorted[0];
+=======
+      const distance = Math.sqrt(
+        item.ans.reduce(
+          (sum, val, idx) =>
+            sum + QUESTIONS[idx].weight * Math.pow(resp[idx] - val, 2),
+          0
+        )
+      )
+      return { ...item, distance }
+    })
+    return scores.sort((a, b) => a.distance - b.distance)[0]
+>>>>>>> 64f8975 (Final)
   }
 
   const handleInputChange = (index, value) => {
@@ -49,64 +62,53 @@ const [view, setView] = useState(() => {
     newResponses[index] = parseInt(value)
     setResponses(newResponses)
 
-    // Update live progress (total answered)
-    const answeredCount = newResponses.filter(r => r !== null).length;
-    updateLiveProgress(answeredCount);
+    const answeredCount = newResponses.filter(r => r !== null).length
+    updateLiveProgress(answeredCount)
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+
     if (responses.includes(null)) {
       setError('Please answer all questions before submitting.')
       return
     }
+
     const bestMatch = calculateSimilarity(responses)
     setTopMatch(bestMatch)
     setView('result')
-    updateLiveProgress(QUESTIONS.length, userName, true) // Mark as completed
+
+    updateLiveProgress(QUESTIONS.length, userName, true)
     await updateMatchCount(bestMatch.id)
   }
-if (view === 'f1') {
-  return <F1 onFinish={() => setView('nameEntry')} />
-}
-  if (view === 'leaderboard') {
-    return (
-      <Leaderboard
-        MAIN_DATA={MAIN_DATA}
-        leaderboard={leaderboard}
-        isLoading={isLoading}
-        expandedMemberId={expandedMemberId}
-        setExpandedMemberId={setExpandedMemberId}
-        onBack={() => setView('form')}
-      />
-    );
+
+  if (view === 'f1') {
+    return <F1 onFinish={() => setView('creepy')} />
   }
 
-  if (view === 'admin') {
+  if (view === 'creepy') {
     return (
-      <AdminDashboard
-        liveData={liveData}
-        QUESTIONS_LENGTH={QUESTIONS.length}
-        onRefresh={() => fetchLiveData()}
-        onClearUsers={clearAllUsers}
-        onResetDatabase={resetDatabase}
-      />
-    );
-  }
-
-  if (view === 'nameEntry') {
-    return (
-      <NameEntry
-        userName={userName}
-        setUserName={setUserName}
-        error={error}
-        setError={setError}
-        onStart={(name) => {
-          updateLiveProgress(0, name);
-          setView('form');
+      <CreepySlide
+        onFinish={(name) => {
+          setUserName(name)
+          updateLiveProgress(0, name)
+          setView('form')
         }}
       />
-    );
+    )
+  }
+
+  if (view === 'form') {
+    return (
+      <QuizForm
+        QUESTIONS={QUESTIONS}
+        responses={responses}
+        handleInputChange={handleInputChange}
+        onSubmit={handleSubmit}
+        error={error}
+        onViewLeaderboard={() => setView('leaderboard')}
+      />
+    )
   }
 
   if (view === 'result' && topMatch) {
@@ -114,75 +116,41 @@ if (view === 'f1') {
       <ResultCard
         topMatch={topMatch}
         onStartOver={() => {
-          setView('nameEntry');
-          setResponses([null, null, null, null, null]);
-          setUserName('');
+          setResponses(new Array(20).fill(null))
+          setUserName('')
+          setView('f1')
         }}
-        onViewLeaderboard={() => {
-          setView('leaderboard');
-        }}
+        onViewLeaderboard={() => setView('leaderboard')}
       />
-    );
+    )
   }
 
-  if (view === 'intro') {
+  if (view === 'leaderboard') {
     return (
-      <div className="container magical-intro">
-        <div className="sparkle-container">
-          <div className="sparkle"></div>
-          <div className="sparkle"></div>
-          <div className="sparkle"></div>
-        </div>
-        
-        <div className="intro-content">
-          <div className="logo-placeholder">
-            <span className="crystal-ball">🔮</span>
-          </div>
-          
-          <h1 className="magical-title">Spirit Board Matcher</h1>
-          <p className="subtitle">
-            In the cosmic digital garden, who is your kindred spirit? 
-            Answer the ancient questions of the board to reveal your destiny.
-          </p>
-  
-          <div className="intro-features">
-            <div className="feature-item">
-              <span className="icon">📜</span>
-              <p>20 Soul-Searching Questions</p>
-            </div>
-            <div className="feature-item">
-              <span className="icon">⚡</span>
-              <p>Advanced Matching Logic</p>
-            </div>
-            <div className="feature-item">
-              <span className="icon">🌐</span>
-              <p>Global Board Leaderboard</p>
-            </div>
-          </div>
-  
-          <button className="submit-btn start-journey-btn" onClick={() => setView('nameEntry')}>
-            Enter the Realm
-            <span className="btn-sparkle">✨</span>
-          </button>
-        </div>
-  
-        <div className="intro-footer">
-          <p>GDG Internal Project • 2026</p>
-        </div>
-      </div>
-    );
+      <Leaderboard
+        MAIN_DATA={MAIN_DATA}
+        leaderboard={leaderboard || {}}
+        isLoading={isLoading}
+        expandedMemberId={expandedMemberId}
+        setExpandedMemberId={setExpandedMemberId}
+        onBack={() => setView('form')}
+      />
+    )
   }
 
-  return (
-    <QuizForm
-      QUESTIONS={QUESTIONS}
-      responses={responses}
-      handleInputChange={handleInputChange}
-      onSubmit={handleSubmit}
-      error={error}
-      onViewLeaderboard={() => setView('leaderboard')}
-    />
-  );
+  if (view === 'admin') {
+    return (
+      <AdminDashboard
+        liveData={liveData}
+        QUESTIONS_LENGTH={QUESTIONS.length}
+        onRefresh={fetchLiveData}
+        onClearUsers={clearAllUsers}
+        onResetDatabase={resetDatabase}
+      />
+    )
+  }
+
+  return null
 }
 
 export default App

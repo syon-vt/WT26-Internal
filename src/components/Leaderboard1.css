@@ -1,0 +1,350 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
+
+.lb-screen h1,
+.lb-screen h2,
+.lb-screen h3,
+.lb-screen p,
+.lb-screen button,
+.lb-screen span {
+  -webkit-text-fill-color: unset;
+  background: none;
+  background-clip: unset;
+  -webkit-background-clip: unset;
+}
+
+/* ─── Screen ─────────────────────────────────────────────────────── */
+.lb-screen {
+  min-height: 100vh;
+  background: radial-gradient(ellipse at 50% 0%, #1a1000 0%, #0d0800 40%, #000 100%);
+  position: relative;
+  overflow: hidden;
+  padding: 0 0 80px;
+}
+
+/* ─── Architectural lines background ─────────────────────────────── */
+.lb-screen::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(212, 175, 55, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212, 175, 55, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+
+/* ─── Top border ─────────────────────────────────────────────────── */
+.lb-screen::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #d4af37, #fff8dc, #d4af37, transparent);
+  pointer-events: none;
+}
+
+/* ─── Header ─────────────────────────────────────────────────────── */
+.lb-header {
+  text-align: center;
+  padding: 60px 20px 40px;
+  position: relative;
+  z-index: 2;
+}
+
+.lb-pretitle {
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  color: rgba(212, 175, 55, 0.5);
+  letter-spacing: 0.3em;
+  margin-bottom: 12px;
+}
+
+.lb-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(1.6rem, 4vw, 2.8rem);
+  color: #d4af37 !important;
+  -webkit-text-fill-color: #d4af37 !important;
+  text-shadow:
+    0 0 20px rgba(212, 175, 55, 0.4),
+    0 2px 4px rgba(0, 0, 0, 0.8);
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+.lb-subtitle {
+  font-family: 'Crimson Text', serif;
+  font-size: 1rem;
+  color: rgba(200, 180, 140, 0.55) !important;
+  -webkit-text-fill-color: rgba(200, 180, 140, 0.55) !important;
+  font-style: italic;
+}
+
+/* ─── Ornamental divider ─────────────────────────────────────────── */
+.lb-ornament {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  max-width: 500px;
+  margin: 0 auto 48px;
+  padding: 0 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.lb-ornament-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.4), transparent);
+}
+
+.lb-ornament-diamond {
+  width: 8px;
+  height: 8px;
+  background: #d4af37;
+  transform: rotate(45deg);
+  box-shadow: 0 0 8px rgba(212, 175, 55, 0.6);
+  flex-shrink: 0;
+}
+
+.lb-ornament-dot {
+  width: 4px;
+  height: 4px;
+  background: rgba(212, 175, 55, 0.5);
+  transform: rotate(45deg);
+  flex-shrink: 0;
+}
+
+/* ─── Loading ────────────────────────────────────────────────────── */
+.lb-loading {
+  text-align: center;
+  font-family: 'Crimson Text', serif;
+  font-size: 1.1rem;
+  color: rgba(200, 160, 80, 0.5) !important;
+  -webkit-text-fill-color: rgba(200, 160, 80, 0.5) !important;
+  font-style: italic;
+  padding: 60px 20px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ─── Cards container ────────────────────────────────────────────── */
+.lb-cards {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ─── Individual card ────────────────────────────────────────────── */
+.lb-card {
+  background: linear-gradient(135deg, #1a1200 0%, #0f0c00 50%, #1a1200 100%);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  overflow: hidden;
+  position: relative;
+}
+
+.lb-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, transparent, #d4af37, transparent);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.lb-card:hover {
+  border-color: rgba(212, 175, 55, 0.45);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(212, 175, 55, 0.1);
+}
+
+.lb-card:hover::before {
+  opacity: 1;
+}
+
+.lb-card.lb-card--expanded {
+  border-color: rgba(212, 175, 55, 0.5);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(212, 175, 55, 0.15);
+}
+
+.lb-card.lb-card--expanded::before {
+  opacity: 1;
+}
+
+/* ─── Rank badges ────────────────────────────────────────────────── */
+.lb-card--rank-1 { border-color: rgba(212, 175, 55, 0.6); }
+.lb-card--rank-2 { border-color: rgba(180, 180, 180, 0.4); }
+.lb-card--rank-3 { border-color: rgba(180, 100, 40, 0.4); }
+
+.lb-card--rank-1::before { opacity: 1; background: linear-gradient(180deg, transparent, #d4af37, transparent); }
+.lb-card--rank-2::before { opacity: 1; background: linear-gradient(180deg, transparent, #b0b0b0, transparent); }
+.lb-card--rank-3::before { opacity: 1; background: linear-gradient(180deg, transparent, #b46428, transparent); }
+
+/* ─── Card header ────────────────────────────────────────────────── */
+.lb-card-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+}
+
+/* ─── Rank number ────────────────────────────────────────────────── */
+.lb-rank {
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  flex-shrink: 0;
+  width: 36px;
+  text-align: center;
+}
+
+.lb-rank--1 { color: #d4af37 !important; -webkit-text-fill-color: #d4af37 !important; text-shadow: 0 0 10px rgba(212, 175, 55, 0.5); }
+.lb-rank--2 { color: #b0b0b0 !important; -webkit-text-fill-color: #b0b0b0 !important; }
+.lb-rank--3 { color: #b46428 !important; -webkit-text-fill-color: #b46428 !important; }
+.lb-rank--other { color: rgba(200, 160, 80, 0.35) !important; -webkit-text-fill-color: rgba(200, 160, 80, 0.35) !important; }
+
+/* ─── Vertical rule ──────────────────────────────────────────────── */
+.lb-vr {
+  width: 1px;
+  height: 36px;
+  background: linear-gradient(180deg, transparent, rgba(212, 175, 55, 0.2), transparent);
+  flex-shrink: 0;
+}
+
+/* ─── Member name ────────────────────────────────────────────────── */
+.lb-member-name {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(0.95rem, 2vw, 1.15rem);
+  color: #e8d5a0 !important;
+  -webkit-text-fill-color: #e8d5a0 !important;
+  flex: 1;
+  letter-spacing: 0.04em;
+}
+
+/* ─── Match count ────────────────────────────────────────────────── */
+.lb-match-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.lb-match-count {
+  font-family: 'Crimson Text', serif;
+  font-size: 0.9rem;
+  color: rgba(200, 160, 80, 0.6) !important;
+  -webkit-text-fill-color: rgba(200, 160, 80, 0.6) !important;
+  font-style: italic;
+  white-space: nowrap;
+}
+
+.lb-chevron {
+  width: 16px;
+  height: 16px;
+  border-right: 1.5px solid rgba(212, 175, 55, 0.4);
+  border-bottom: 1.5px solid rgba(212, 175, 55, 0.4);
+  transform: rotate(45deg);
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+  margin-bottom: 4px;
+}
+
+.lb-card--expanded .lb-chevron {
+  transform: rotate(-135deg);
+  margin-bottom: -4px;
+}
+
+/* ─── Expanded details ───────────────────────────────────────────── */
+.lb-card-details {
+  border-top: 1px solid rgba(212, 175, 55, 0.1);
+  padding: 20px 24px 24px;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.lb-details-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  color: rgba(212, 175, 55, 0.4) !important;
+  -webkit-text-fill-color: rgba(212, 175, 55, 0.4) !important;
+  letter-spacing: 0.2em;
+  margin-bottom: 14px;
+}
+
+.lb-names-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.lb-name-tag {
+  font-family: 'Crimson Text', serif;
+  font-size: 0.9rem;
+  color: rgba(220, 200, 160, 0.8) !important;
+  -webkit-text-fill-color: rgba(220, 200, 160, 0.8) !important;
+  background: rgba(212, 175, 55, 0.06) !important;
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  border-radius: 2px;
+  padding: 5px 14px;
+  font-style: italic;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.lb-name-tag:hover {
+  background: rgba(212, 175, 55, 0.1) !important;
+  border-color: rgba(212, 175, 55, 0.3);
+}
+
+.lb-empty {
+  font-family: 'Crimson Text', serif;
+  font-size: 0.95rem;
+  color: rgba(200, 160, 80, 0.35) !important;
+  -webkit-text-fill-color: rgba(200, 160, 80, 0.35) !important;
+  font-style: italic;
+}
+
+/* ─── Back button area ───────────────────────────────────────────── */
+.lb-footer {
+  text-align: center;
+  margin-top: 52px;
+  position: relative;
+  z-index: 2;
+}
+
+.lb-back-btn {
+  font-family: 'Cinzel', serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  color: rgba(200, 160, 80, 0.55) !important;
+  -webkit-text-fill-color: rgba(200, 160, 80, 0.55) !important;
+  background: transparent !important;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 2px;
+  padding: 12px 36px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.lb-back-btn:hover {
+  color: #d4af37 !important;
+  -webkit-text-fill-color: #d4af37 !important;
+  border-color: rgba(212, 175, 55, 0.5);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
+}
+
+/* ─── Responsive ─────────────────────────────────────────────────── */
+@media (max-width: 500px) {
+  .lb-card-header { padding: 16px; gap: 12px; }
+  .lb-card-details { padding: 16px; }
+  .lb-member-name { font-size: 0.9rem !important; }
+}

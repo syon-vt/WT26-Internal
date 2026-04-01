@@ -1,23 +1,72 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import './ResultCard.css';
+
+const SOULS = [
+  "A kindred spirit of aesthetic chaos and pure vibes.",
+  "A chaotic mastermind with unmatched energy.",
+  "A gentle soul hiding elite survival instincts.",
+  "A multitasking legend with secret chaos powers.",
+  "A philosophical gremlin in disguise.",
+  "A wildcard who keeps everyone on their toes.",
+];
 
 const ResultCard = ({ topMatch, onStartOver, onViewLeaderboard }) => {
-  return (
-    <div className="container result-page">
-      <h1>Your Top Match</h1>
-      <div className="result-card">
-        <h2>{topMatch.name}</h2>
-        <div className="match-details">
-          <p>This personality segment most closely aligns with your responses.</p>
-        </div>
-      </div>
-      <div className="nav-group">
-        <button className="back-btn" onClick={onStartOver}>
-          Start Over
-        </button>
+  const [revealed, setRevealed] = useState(false);
+  const [showButtons, setShowButtons] = useState(false);
 
-        <button className="leaderboard-btn" onClick={onViewLeaderboard}>
-          View Leaderboard
-        </button>
+  useEffect(() => {
+    const t1 = setTimeout(() => setRevealed(true), 600);
+    const t2 = setTimeout(() => setShowButtons(true), 2200);
+    return () => { clearTimeout(t1); clearTimeout(t2); };
+  }, []);
+
+  const soul = SOULS[(topMatch.id - 1) % SOULS.length];
+
+  return (
+    <div className="rc-screen">
+
+      {/* Ambient fog layers */}
+      <div className="rc-fog rc-fog-1" />
+      <div className="rc-fog rc-fog-2" />
+      <div className="rc-fog rc-fog-3" />
+
+      {/* Floating particles */}
+      {[...Array(12)].map((_, i) => (
+        <div key={i} className={`rc-particle rc-particle-${i + 1}`} />
+      ))}
+
+      {/* Rays of light */}
+      <div className="rc-rays" />
+
+      {/* Main card */}
+      <div className={`rc-card ${revealed ? 'rc-card--revealed' : ''}`}>
+
+        {/* Glow ring behind hat */}
+        <div className="rc-halo" />
+
+        <div className="rc-hat">🎩</div>
+
+        <p className="rc-eyebrow">✦ THE HAT HATH SPOKEN ✦</p>
+
+        <h1 className="rc-name">{topMatch.name}</h1>
+
+        <div className="rc-divider">
+          <span className="rc-divider-rune">ᚠ</span>
+          <span className="rc-divider-line" />
+          <span className="rc-divider-rune">ᚹ</span>
+        </div>
+
+        <p className="rc-soul">{soul}</p>
+
+        <div className={`rc-buttons ${showButtons ? 'rc-buttons--visible' : ''}`}>
+          <button className="rc-btn rc-btn--ghost" onClick={onStartOver}>
+            ↩ Try again, mortal
+          </button>
+          <button className="rc-btn rc-btn--gold" onClick={onViewLeaderboard}>
+            View the Sacred Board ✦
+          </button>
+        </div>
+
       </div>
     </div>
   );

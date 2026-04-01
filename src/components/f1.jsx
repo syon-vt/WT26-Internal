@@ -3,51 +3,42 @@ import React, { useState, useEffect } from 'react';
 export default function MagicalIntro({ onFinish }) {
   const [hatLanded, setHatLanded] = useState(false);
   const [hatFlipped, setHatFlipped] = useState(false);
+  const [hatClickable, setHatClickable] = useState(false);
   const [showScrolls, setShowScrolls] = useState(false);
   const [scrollsDisappear, setScrollsDisappear] = useState(false);
   const [slideNumber, setSlideNumber] = useState(1);
-  const [showCTA, setShowCTA] = useState(false);
 
   useEffect(() => {
     const landTimer = setTimeout(() => setHatLanded(true), 2500);
     const flipTimer = setTimeout(() => setHatFlipped(true), 2700);
     const scrollTimer = setTimeout(() => setShowScrolls(true), 3500);
-    const disappearTimer = setTimeout(() => setScrollsDisappear(true), 6000);
-    const ctaTimer = setTimeout(() => setShowCTA(true), 6800);
+    const clickableTimer = setTimeout(() => {
+  setHatClickable(true);
+}, 2800);
 
     return () => {
       clearTimeout(landTimer);
       clearTimeout(flipTimer);
       clearTimeout(scrollTimer);
-      clearTimeout(disappearTimer);
-      clearTimeout(ctaTimer);
+      clearTimeout(clickableTimer);
     };
   }, []);
 
   const handleHatClick = () => {
-    if (hatFlipped) {
-      if (!scrollsDisappear) setScrollsDisappear(true);
-      setTimeout(() => {
-        setSlideNumber(2);
-        if (onFinish) onFinish();
-      }, 600);
-    }
-  };
+  if (hatClickable && hatFlipped && !scrollsDisappear) {
+    setScrollsDisappear(true);
+    setTimeout(() => {
+      setSlideNumber(2);
+      if (onFinish) onFinish();
+    }, 1000);
+  }
+};
 
   if (slideNumber === 2) {
-    return (
-      <div style={{
-        position: 'fixed', top: 0, left: 0,
-        width: '100vw', height: '100vh',
-        background: 'linear-gradient(to bottom, #1e293b, #0f172a)',
-        display: 'flex', alignItems: 'center', justifyContent: 'center'
-      }}>
-        <div style={{ color: 'white', fontSize: '2rem', fontWeight: 'bold' }}>
-          Slide 2 - Ready for your next design!
-        </div>
-      </div>
-    );
-  }
+  // Call onFinish to go to creepy slide
+  if (onFinish) onFinish();
+  return null; // Return null while transitioning
+}
 
   return (
     <div style={{
@@ -118,7 +109,7 @@ export default function MagicalIntro({ onFinish }) {
         style={{
           position: 'absolute',
           zIndex: 30,
-          cursor: 'pointer',
+          cursor: hatClickable ? 'pointer' : 'default',
           width: 'clamp(130px, 13vw, 220px)',
           height: 'clamp(130px, 13vw, 220px)',
           animation: hatLanded ? 'none' : 'swooshPath 2.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards',
@@ -140,33 +131,26 @@ export default function MagicalIntro({ onFinish }) {
         </div>
       </div>
 
-      {/* CTA hint */}
-      {showCTA && (
-        <div style={{
-          position: 'absolute',
-          top: 'calc(50% + clamp(80px, 9vw, 140px))',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          zIndex: 40,
-          textAlign: 'center',
-          animation: 'ctaFadeIn 1.2s ease forwards',
-          pointerEvents: 'none',
-        }}>
-          <p style={{
-            color: '#fbbf24',
-            fontFamily: 'Georgia, serif',
-            fontSize: 'clamp(0.85rem, 1.5vw, 1.1rem)',
-            letterSpacing: '0.14em',
-            textTransform: 'uppercase',
-            margin: 0,
-            textShadow: '0 0 18px rgba(251,191,36,0.55)',
-          }}>
-            touch the hat to begin
-          </p>
-        </div>
-      )}
-
       {/* Scrolls */}
+      {hatClickable && !scrollsDisappear && (
+  <div style={{
+    position: 'absolute',
+    bottom: '20%',
+    left: '50%',
+    transform: 'translateX(-50%)',
+    color: '#fbbf24',
+    fontSize: 'clamp(18px, 3vw, 24px)',
+    fontWeight: 'bold',
+    backgroundColor: 'rgba(0,0,0,0.7)',
+    padding: '12px 24px',
+    borderRadius: '40px',
+    zIndex: 40,
+    animation: 'pulseText 1.5s ease-in-out infinite',
+    whiteSpace: 'nowrap',
+  }}>
+     Tap on the Hat to explore 
+  </div>
+)}
       {showScrolls && !scrollsDisappear && (
         <>
           <ClosedScroll delay={0} position="far-left" />
@@ -198,11 +182,10 @@ export default function MagicalIntro({ onFinish }) {
       )}
 
       <style>{`
-
-        @keyframes ctaFadeIn {
-          0% { opacity: 0; transform: translateX(-50%) translateY(8px); }
-          100% { opacity: 1; transform: translateX(-50%) translateY(0); }
-        }
+      @keyframes pulseText {
+  0%, 100% { opacity: 0.7; transform: translateX(-50%) scale(1); }
+  50% { opacity: 1; transform: translateX(-50%) scale(1.05); }
+}
         @keyframes swooshPath {
           0% {
             top: -400px;
