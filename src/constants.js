@@ -4,7 +4,10 @@ export const MAIN_DATA = [
   { id: 3, name: "Bhavya", ans: [4, 1, 4, 3, 5, 2, 1, 4, 1, 1, 2, 2, 4, 4, 5, 3, 4, 4, 4, 1] },
   { id: 4, name: "Reenu", ans: [4, 3, 4, 5, 1, 4, 3, 1, 1, 3, 1, 4, 5, 5, 5, 5, 3, 3, 2, 3] },
   { id: 5, name: "Aditya Acharya", ans: [3, 4, 2, 4, 2, 2, 3, 4, 4, 2, 5, 3, 5, 5, 4, 3, 3, 2, 4, 2] },
-  { id: 6, name: "Sarah", ans: [4, 1, 5, 2, 3, 5, 3, 5, 1, 5, 2, 4, 4, 2, 5, 1, 3, 5, 3, 1] }
+  { id: 6, name: "Sarah", ans: [4, 1, 5, 2, 3, 5, 3, 5, 1, 5, 2, 4, 4, 2, 5, 1, 3, 5, 3, 1] },
+  { id: 7, name: "Rujin", ans: [3, 2, 4, 5, 3, 4, 1, 1, 3, 1, 3, 5, 5, 5, 5, 1, 4, 1, 2, 3] },
+  { id: 8, name: "Nitin", ans: [4, 1, 5, 5, 5, 5, 1, 1, 5, 5, 5, 5, 5, 5, 5, 5, 3, 1, 1, 1] },
+  { id: 9, name: "Varshith", ans: [1, 1, 5, 1, 1, 1, 5, 1, 5, 5, 1, 5, 5, 5, 5, 5, 3, 5, 5, 1] }
 ];
 
 export const QUESTIONS = [
@@ -100,31 +103,31 @@ export const QUESTIONS = [
   },
   {
     text: "I possess the '10 CGPA' energy of someone who hasn't stepped foot in a classroom since 2022",
-    weight: 1,
+    weight: 1.5,
     minLabel: "Trying my best to get that 75",
     maxLabel: "What's a classroom??"
   },
   {
     text: "Rate your zestiness",
-    weight: 1,
+    weight: 1.5,
     minLabel: "Wdym 'Zesty'",
     maxLabel: "ZESTYYYYY 🎀🎀"
   },
   {
     text: "I love my graveyard of half empty plastic bottles",
-    weight: 1,
+    weight: 1.5,
     minLabel: "No i love my room",
     maxLabel: "My room is a monument"
   },
   {
     text: "My default response to a friend describing a life-altering tragedy is 'That’s crazy'",
-    weight: 1,
+    weight: 1.5,
     minLabel: "Communication is so important",
     maxLabel: "That's crazy"
   },
   {
     text: "I have the hand eye coordination of a drunk toddler",
-    weight: 1,
+    weight: 1.5,
     minLabel: "Nah im amazing",
     maxLabel: "Yo that drunk toddler is ME"
   }

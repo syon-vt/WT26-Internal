@@ -727,3 +727,23 @@ button {
     padding: 0 1rem;
   }
 }
+
+/* Migrated from f1.css */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+.f1-scene {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.scrollable-view {
+  overflow-y: auto;
+  height: 100vh;
+  position: relative;
+}

@@ -23,6 +23,7 @@ const QuizForm = ({ QUESTIONS, responses, handleInputChange, onSubmit, error, on
                       value={val}
                       checked={responses[idx] === val}
                       onChange={(e) => handleInputChange(idx, e.target.value)}
+                      required
                     />
                     {val}
                   </label>

@@ -34,13 +34,13 @@ const [view, setView] = useState(() => {
 
   const calculateSimilarity = (resp) => {
     const scores = MAIN_DATA.map(item => {
-      const distance = Math.sqrt(
-        item.ans.reduce((sum, val, idx) => sum + (QUESTIONS[idx].weight * Math.pow(resp[idx] - val, 2)), 0)
-      )
-      return { ...item, distance }
-    })
-    const sorted = scores.sort((a, b) => a.distance - b.distance)
-    return sorted[0]
+      const distance = item.ans.reduce((sum, val, idx) => {
+        return sum + (QUESTIONS[idx].weight * Math.abs(resp[idx] - val));
+      }, 0);
+      return { ...item, distance };
+    });
+    const sorted = scores.sort((a, b) => a.distance - b.distance);
+    return sorted[0];
   }
 
   const handleInputChange = (index, value) => {
