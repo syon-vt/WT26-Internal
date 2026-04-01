@@ -1,6 +1,50 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const AdminDashboard = ({ liveData, QUESTIONS_LENGTH, onRefresh, onClearUsers, onResetDatabase }) => {
+  const [passcode, setPasscode] = useState('');
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [error, setError] = useState('');
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    if (passcode === '7410') {
+      setIsAuthenticated(true);
+      setError('');
+    } else {
+      setError('Invalid passcode.');
+      setPasscode('');
+    }
+  };
+
+  if (!isAuthenticated) {
+    return (
+      <div className="container admin-page" style={{ maxWidth: '400px', textAlign: 'center' }}>
+        <h1 style={{ fontSize: '2rem' }}>Admin Access</h1>
+        <form onSubmit={handleLogin} className="question-group" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', marginTop: '2rem' }}>
+          <input 
+            type="password" 
+            placeholder="Enter passcode..."
+            value={passcode} 
+            onChange={(e) => { setPasscode(e.target.value); setError(''); }}
+            style={{ 
+              padding: '1rem', 
+              borderRadius: '12px', 
+              border: `1px solid ${error ? '#ff4e4e' : 'var(--border)'}`, 
+              fontSize: '1.5rem', 
+              textAlign: 'center',
+              letterSpacing: '0.5rem',
+              background: 'var(--bg-soft)', 
+              color: 'var(--text)' 
+            }}
+            autoFocus
+          />
+          {error && <p style={{ color: '#ff4e4e', margin: '-0.5rem 0 0 0', fontWeight: '500' }}>{error}</p>}
+          <button type="submit" className="submit-btn">Unlock Dashboard</button>
+        </form>
+      </div>
+    );
+  }
+
   return (
     <div className="container admin-page">
       <h1>Live Admin Dashboard</h1>
@@ -56,7 +100,7 @@ const AdminDashboard = ({ liveData, QUESTIONS_LENGTH, onRefresh, onClearUsers, o
         <button 
           className="back-btn" 
           onClick={onResetDatabase} 
-          style={{ borderColor: 'var(--error, #ff4e4e)', color: 'var(--error, #ff4e4e)', flex: '1 1 100%' }}
+          style={{ borderColor: '#ff4e4e', color: '#ff4e4e', flex: '1 1 100%' }}
         >
           Factory Reset Database
         </button>
