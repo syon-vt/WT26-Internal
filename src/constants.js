@@ -1,40 +1,56 @@
-export const MAIN_DATA = [
-  { id: 1, name: "Radhika", ans: [5, 1, 5, 5, 3, 1, 1, 4, 1, 1, 1, 1, 1, 1, 5, 1, 3, 1, 1, 1] },
-  { id: 2, name: "Aditya Shukla", ans: [2, 5, 5, 5, 1, 3, 5, 5, 3, 1, 5, 5, 5, 5, 1, 3, 3, 1, 5, 1] },
-  { id: 3, name: "Bhavya", ans: [4, 1, 4, 3, 5, 2, 1, 4, 1, 1, 2, 2, 4, 4, 5, 3, 4, 4, 4, 1] },
-  { id: 4, name: "Reenu", ans: [4, 3, 4, 5, 1, 4, 3, 1, 1, 3, 1, 4, 5, 5, 5, 5, 3, 3, 2, 3] },
-  { id: 5, name: "Aditya Acharya", ans: [3, 4, 2, 4, 2, 2, 3, 4, 4, 2, 5, 3, 5, 5, 4, 3, 3, 2, 4, 2] },
-  { id: 6, name: "Sarah", ans: [4, 1, 5, 2, 3, 5, 3, 5, 1, 5, 2, 4, 4, 2, 5, 1, 3, 5, 3, 1] },
-  { id: 7, name: "Rujin", ans: [3, 2, 4, 5, 3, 4, 1, 1, 3, 1, 3, 5, 5, 5, 5, 1, 4, 1, 2, 3] },
-  { id: 8, name: "Nitin", ans: [4, 1, 5, 5, 5, 5, 1, 1, 5, 5, 5, 5, 5, 5, 5, 5, 3, 1, 1, 1] },
-  { id: 9, name: "Varshith", ans: [1, 1, 5, 1, 1, 1, 5, 1, 5, 5, 1, 5, 5, 5, 5, 5, 3, 5, 5, 1] },
-  { id: 10, name: "Aman", ans: [1, 4, 3, 5, 4, 3, 2, 2, 1, 5, 3, 5, 5, 4, 5, 5, 1, 1, 4, 4] }
-];
+import radhikaPhoto from './assets/profile/Radhika.JPG';
+import adityaSPhoto from './assets/profile/Aditya Shukla.png';
+import bhavyaPhoto from './assets/profile/Bhavya.png';
+import reenuPhoto from './assets/profile/Reenu.JPG';
+import adityaAPhoto from './assets/profile/Aditya Acharya.JPG';
+import sarahPhoto from './assets/profile/Sarah.JPG';
+import rujinPhoto from './assets/profile/Rujin.jpg';
+import nitinPhoto from './assets/profile/Nitin.jpg';
+import varshithPhoto from './assets/profile/Varshith.JPG';
+import amanPhoto from './assets/profile/Aman.JPG';
 
+export const MAIN_DATA = [
+  { id: 1,  name: "Radhika",       photo: radhikaPhoto,  blurb: "Curates the perfect aesthetic and then sends the whole vibe to voicemail. Deeply principled, quietly chaotic, and significantly more haunted than she lets on.",                                              ans: [5, 1, 5, 5, 3, 1, 1, 4, 1, 1, 1, 1, 1, 1, 5, 1, 3, 1, 1, 1] },
+  { id: 2,  name: "Aditya Shukla", photo: adityaSPhoto,  blurb: "The menace who rehearsed the argument, won it, and still feels bad about it. Chaotic with impeccable timing and a USB drive policy that is genuinely alarming.",                                           ans: [2, 5, 5, 5, 1, 3, 5, 5, 3, 1, 5, 5, 5, 5, 1, 3, 3, 1, 5, 1] },
+  { id: 3,  name: "Bhavya",        photo: bhavyaPhoto,   blurb: "Looks calm, is internally writing the sequel. Would survive the horror movie, hang the haunted mirror, and still have the most organised shelf in the building.",                                               ans: [4, 1, 4, 3, 5, 2, 1, 4, 1, 1, 2, 2, 4, 4, 5, 3, 4, 4, 4, 1] },
+  { id: 4,  name: "Reenu",         photo: reenuPhoto,    blurb: "Operates at full power but makes it look effortless. The kind of person who'd negotiate the demon deal, get the good amenities, and still leave five stars.",                                                   ans: [4, 3, 4, 5, 1, 4, 3, 1, 1, 3, 1, 4, 5, 5, 5, 5, 3, 3, 2, 3] },
+  { id: 5,  name: "Aditya Acharya",photo: adityaAPhoto,  blurb: "A measured soul with secret gremlin energy just below the surface. Would think before plugging in the USB, then plug it in anyway because curiosity always wins.",                                              ans: [3, 4, 2, 4, 2, 2, 3, 4, 4, 2, 5, 3, 5, 5, 4, 3, 3, 2, 4, 2] },
+  { id: 6,  name: "Sarah",         photo: sarahPhoto,    blurb: "The wildcard the universe did not ask for but absolutely needed. Emotionally unavailable to phone calls, emotionally over-invested in vibes. A gift to the cosmos.",                                             ans: [4, 1, 5, 2, 3, 5, 3, 5, 1, 5, 2, 4, 4, 2, 5, 1, 3, 5, 3, 1] },
+  { id: 7,  name: "Rujin",         photo: rujinPhoto,    blurb: "A top-of-class aura running entirely on muscle memory and general audacity. The alibi, the mastermind, and somehow also the most laid-back person in the room.",                                                ans: [3, 2, 4, 5, 3, 4, 1, 1, 3, 1, 3, 5, 5, 5, 5, 1, 4, 1, 2, 3] },
+  { id: 8,  name: "Nitin",         photo: nitinPhoto,    blurb: "Fully unhinged, fully committed, zero regrets. Would fight the dog, plug in the USB, hang the mirror, and call that a productive Tuesday. Pure chaotic excellence.",                                            ans: [4, 1, 5, 5, 5, 5, 1, 1, 5, 5, 5, 5, 5, 5, 5, 5, 3, 1, 1, 1] },
+  { id: 9,  name: "Varshith",      photo: varshithPhoto, blurb: "A passive-aggressive ghost in the making, moving things 1cm daily and leaving no evidence. The courtroom in his head has a full jury and excellent acoustics.",                                                  ans: [1, 1, 5, 1, 1, 1, 5, 1, 5, 5, 1, 5, 5, 5, 5, 5, 3, 5, 5, 1] },
+  { id: 10, name: "Aman",          photo: amanPhoto,     blurb: "Deeply relatable to leftover food. Has his people, his data structures, and a slow nod that somehow communicates everything. The 'damn. anyway—' energy is real.",                                              ans: [1, 4, 3, 5, 4, 3, 2, 2, 1, 5, 3, 5, 5, 4, 5, 5, 1, 1, 4, 4] }
+];
 export const QUESTIONS = [
   {
-    text: "I would willingly join a cult if their uniforms were aesthetic asf",
+    text: "I would sell my ethics for a really good aesthetic",
     weight: 1,
-    minLabel: "I don't like em cults",
-    maxLabel: "I need em for my instagram"
+    minLabel: "I have principles, thanks",
+    maxLabel: "Beauty is my religion"
   },
   {
     text: "I would fight a three legged dog for 20 rs and an orange lays",
     weight: 1,
     minLabel: "I fight for animal rights",
-    maxLabel: "Aint anything stopping me from my lays"
+    maxLabel: "Ain't anything stopping me from my lays"
   },
   {
-    text: "I've bumped into a random object and said 'sorry gang'",
+    text: "I feel genuine guilt when I accidentally close a tab I didn't mean to",
     weight: 1,
-    minLabel: "I don't like saying sorry",
-    maxLabel: "Kindness costs nothing"
+    minLabel: "It's just a tab lol",
+    maxLabel: "RIP lil bro, I'm so sorry"
   },
   {
-    text: "If some random shady dude gave me a box i am SO opening that",
+    text: "If a stranger handed me an unmarked USB drive, I'd plug it in",
     weight: 1,
-    minLabel: "I have a permit for my brains",
-    maxLabel: "Adventure lessgooo"
+    minLabel: "I have a functioning brain",
+    maxLabel: "Worth the risk, let's gooo"
+  },
+  {
+    text: "I've watched my phone ring, made eye contact with the screen, and watched it die",
+    weight: 1,
+    minLabel: "I answer on the first ring",
+    maxLabel: "Let it go to voicemail"
   },
   {
     text: "I don't pick up calls even if the world is ending",
@@ -43,95 +59,89 @@ export const QUESTIONS = [
     maxLabel: "I got better things to do"
   },
   {
-    text: "I could be so annoying that my kidnappers would return me and ask for a refund",
+    text: "I have rehearsed arguments for fights that have never happened and will never happen",
     weight: 1,
-    minLabel: "I am a professional",
-    maxLabel: "I am just a girl/boy/other 🎀"
+    minLabel: "I live in the present",
+    maxLabel: "I have a full courtroom in my head"
   },
   {
-    text: "I debate with myself in the shower and lose",
+    text: "I see someone horizontal on a couch doing nothing and think 'that's the dream'",
     weight: 1,
-    minLabel: "I aint that weird",
-    maxLabel: "I don't lose ALWAYS"
+    minLabel: "I aspire to more",
+    maxLabel: "Goals honestly"
   },
   {
-    text: "I would see a stray dog sleeping and think 'huh relatable'",
+    text: "Someone tells me this antique mirror has a dark history. I'd hang it in my room anyway",
     weight: 1,
-    minLabel: "Nah",
-    maxLabel: "Relatable"
+    minLabel: "I've seen Conjuring",
+    maxLabel: "Aesthetic first, haunting later"
   },
   {
-    text: "If i gave you a creepy doll that whispers to u (but its lowkey chill), would u keep it?",
+    text: "I relate deeply to leftover food that nobody came back for",
     weight: 1,
-    minLabel: "I've seen enough horror movies",
-    maxLabel: "Yay i got another buddy"
+    minLabel: "I have my people",
+    maxLabel: "Been there, felt that"
   },
   {
-    text: "How well do you relate to a cold maggie stuck to the side of the tiffin",
+    text: "I would negotiate with a demon if the deal came with good amenities",
     weight: 1,
-    minLabel: "No i got standards",
-    maxLabel: "Nostalgic man"
+    minLabel: "I have standards and a soul",
+    maxLabel: "Depends on the WiFi speed"
   },
   {
-    text: "If hell had a bean bag and free WiFi, i wouldn't mind entering",
+    text: "If I became a ghost, I would be the most passive-aggressive one in the building",
     weight: 1,
-    minLabel: "Hell is hell bruh",
-    maxLabel: "I would want to update my linkedin"
+    minLabel: "I'd be a peaceful spirit",
+    maxLabel: "Moving their stuff 1cm daily"
   },
   {
-    text: "How well do u think you could haunt ur roommate",
+    text: "In a horror movie, I am the character who makes it to the end",
     weight: 1,
-    minLabel: "I'm too nice for allat",
-    maxLabel: "Horror movies gonna start taking notes"
+    minLabel: "I'm background character #4",
+    maxLabel: "I'm writing the sequel"
   },
   {
-    text: "I would 100 percent survive a zombie apocalypse",
+    text: "I could pull off something deeply chaotic and leave zero evidence",
     weight: 1,
-    minLabel: "I would be the first to die lowk",
-    maxLabel: "Yea i might even rule all of em"
+    minLabel: "I'd confess immediately",
+    maxLabel: "I am the alibi"
   },
   {
-    text: "I could successfully hide a body",
+    text: "On a scale of 1-5, how glad is the universe that you showed up",
     weight: 1,
-    minLabel: "I'm too grounded for all that",
-    maxLabel: "Criminal mastermind yall"
+    minLabel: "It did not ask for me",
+    maxLabel: "Honestly a gift to the cosmos"
   },
   {
-    text: "Rate your existence",
+    text: "I give off 'top of the class' energy while operating entirely on vibes and muscle memory",
     weight: 1,
-    minLabel: "I should prolly kms",
-    maxLabel: "Take pride that u know me"
+    minLabel: "I actually do the work",
+    maxLabel: "Vibe-based excellence only"
   },
   {
-    text: "I possess the '10 CGPA' energy of someone who hasn't stepped foot in a classroom since 2022",
+    text: "How much of you is just pure, unhinged, chaotic little creature energy",
     weight: 1,
-    minLabel: "Trying my best to get that 75",
-    maxLabel: "What's a classroom??"
+    minLabel: "I am composed and normal",
+    maxLabel: "I am the chaos"
   },
   {
-    text: "Rate your zestiness",
+    text: "My room has things in it that I have not acknowledged in over three months",
     weight: 1,
-    minLabel: "Wdym 'Zesty'",
-    maxLabel: "ZESTYYYYY 🎀🎀"
+    minLabel: "My room is clean and good",
+    maxLabel: "There are things living in there"
   },
   {
-    text: "I love my graveyard of half empty plastic bottles",
+    text: "My emotional support is a single 'damn' and a slow nod",
     weight: 1,
-    minLabel: "No i love my room",
-    maxLabel: "My room is a monument"
+    minLabel: "I am emotionally available",
+    maxLabel: "Damn. Anyway—"
   },
   {
-    text: "My default response to a friend describing a life-altering tragedy is 'That’s crazy'",
+    text: "I have knocked something over today and I was just standing there",
     weight: 1,
-    minLabel: "Communication is so important",
-    maxLabel: "That's crazy"
+    minLabel: "I have full control of my body",
+    maxLabel: "Gravity has a personal vendetta"
   },
-  {
-    text: "I have the hand eye coordination of a drunk toddler",
-    weight: 1,
-    minLabel: "Nah im amazing",
-    maxLabel: "Yo that drunk toddler is ME"
-  }
 ];
 
 //last 5 questions have more weight

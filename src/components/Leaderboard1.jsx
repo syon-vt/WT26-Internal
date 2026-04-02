@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import './Leaderboard1.css';
 
 const Leaderboard = ({ MAIN_DATA, leaderboard, isLoading, expandedMemberId, setExpandedMemberId, onBack }) => {
@@ -19,6 +19,22 @@ const Leaderboard = ({ MAIN_DATA, leaderboard, isLoading, expandedMemberId, setE
     const count = names.length;
     return { ...member, names, count };
   }).sort((a, b) => b.count - a.count);
+
+  const handleCardClick = useCallback((e, memberId, isExpanded) => {
+    // Ripple effect
+    const card = e.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const ripple = document.createElement('span');
+    ripple.className = 'lb-ripple';
+    ripple.style.left = `${x}px`;
+    ripple.style.top = `${y}px`;
+    card.appendChild(ripple);
+    ripple.addEventListener('animationend', () => ripple.remove());
+
+    setExpandedMemberId(isExpanded ? null : memberId);
+  }, [setExpandedMemberId]);
 
   return (
     <div className="lb-screen">
@@ -49,13 +65,18 @@ const Leaderboard = ({ MAIN_DATA, leaderboard, isLoading, expandedMemberId, setE
               <div
                 key={member.id}
                 className={`lb-card lb-card--rank-${rank <= 3 ? rank : 'other'} ${isExpanded ? 'lb-card--expanded' : ''}`}
-                onClick={() => setExpandedMemberId(isExpanded ? null : member.id)}
+                onClick={(e) => handleCardClick(e, member.id, isExpanded)}
               >
                 <div className="lb-card-header">
                   <span className={`lb-rank lb-rank--${rank <= 3 ? rank : 'other'}`}>
                     {rank <= 3 ? ['I', 'II', 'III'][rank - 1] : `${rank}`}
                   </span>
                   <div className="lb-vr" />
+                  {member.photo && (
+                    <div className="lb-avatar-wrap">
+                      <img src={member.photo} alt={member.name} className="lb-avatar" />
+                    </div>
+                  )}
                   <span className="lb-member-name">{member.name}</span>
                   <div className="lb-match-info">
                     <span className="lb-match-count">
@@ -102,4 +123,4 @@ const Leaderboard = ({ MAIN_DATA, leaderboard, isLoading, expandedMemberId, setE
   );
 };
 
-export default Leaderboard;
+export default Leaderboard;

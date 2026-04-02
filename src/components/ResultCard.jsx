@@ -48,6 +48,12 @@ const ResultCard = ({ topMatch, onStartOver, onViewLeaderboard }) => {
 
         <p className="rc-eyebrow">✦ THE HAT HATH SPOKEN ✦</p>
 
+        {topMatch.photo && (
+          <div className={`rc-photo-frame ${revealed ? 'rc-photo-frame--revealed' : ''}`}>
+            <img src={topMatch.photo} alt={topMatch.name} className="rc-photo" />
+          </div>
+        )}
+
         <h1 className="rc-name">{topMatch.name}</h1>
 
         <div className="rc-divider">
