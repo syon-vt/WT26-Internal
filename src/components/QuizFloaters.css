@@ -1,0 +1,51 @@
+/* ─── Floating wizard stickers — refined distribution & side alignment ─── */
+
+/* 
+  Container: inside qf-scroll-bg.
+  We want to keep this container strictly within the viewport width 
+  so that stickers don't cause horizontal horizontal scrollbars.
+*/
+.qf-floaters {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;         /* float on top but with low opacity */
+  overflow: hidden;      /* clip stickers that wander into the void */
+  --mx: 0;
+  --my: 0;
+}
+
+/* 
+  Outer wrapper: handles mouse parallax.
+  Use translate(-50%, -50%) to ensure the sticker's center is 
+  what's being positioned, preventing edge-bleed.
+*/
+.qf-fp-wrap {
+  position: absolute;
+  transform: translate(
+    calc(-50% + var(--mx) * var(--depth) * 60px),
+    calc(-50% + var(--my) * var(--depth) * 40px)
+  );
+  transition: transform 0.2s ease-out;
+}
+
+/* Inner: the bob/float animation */
+.qf-floater {
+  opacity: 0.3;        /* Increased slightly for better presence */
+  filter: saturate(0.9) brightness(1.1) contrast(1.1);
+  animation: qfFloat var(--dur, 20s) var(--delay, 0s) ease-in-out infinite;
+}
+
+.qf-floater img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@keyframes qfFloat {
+  0%   { transform: rotate(var(--rot, 0deg)) translate(0px, 0px)                      scale(1);    }
+  25%  { transform: rotate(calc(var(--rot, 0deg) + 7deg)) translate(55px, -45px)      scale(1.08); }
+  50%  { transform: rotate(var(--rot, 0deg)) translate(-45px, -90px)                 scale(1);    }
+  75%  { transform: rotate(calc(var(--rot, 0deg) - 7deg)) translate(45px, -40px)      scale(0.92); }
+  100% { transform: rotate(var(--rot, 0deg)) translate(0px, 0px)                      scale(1);    }
+}

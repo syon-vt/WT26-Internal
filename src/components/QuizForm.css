@@ -12,6 +12,11 @@
   position: relative;
   background: #000;
   overflow: hidden;
+  /* Break out of #root 1000px padding constraints */
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  /* offset the padding-top from parent if needed */
+  margin-top: -2rem; 
 }
 
 .qf-scroll-bg {
@@ -25,8 +30,16 @@
   position: relative;
   z-index: 2;
   width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
   transform-origin: top center;
   animation: scrollDrop 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@media (min-width: 1024px) {
+  .qf-scroll-curtain {
+    width: 75%;
+  }
 }
 
 @keyframes scrollDrop {
@@ -121,6 +134,8 @@
   margin-bottom: 32px;
   border-bottom: 1px solid rgba(200, 160, 50, 0.15);
   padding-bottom: 24px;
+  position: relative;
+  z-index: 1;
 }
 
 .qf-lightning {
@@ -161,6 +176,8 @@
 /* â”€â”€â”€ Progress â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .qf-prog-wrap {
   margin-bottom: 28px;
+  position: relative;
+  z-index: 1;
 }
 
 .qf-prog-label {
@@ -210,6 +227,8 @@
   opacity: 0;
   transform: translateY(8px);
   transition: opacity 0.35s ease, transform 0.35s ease;
+  position: relative;
+  z-index: 1;
 }
 
 .qf-question.visible {
