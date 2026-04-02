@@ -210,9 +210,9 @@ export default function CreepySlide({ onFinish }) {
           50%     { opacity: 1; color: #ffd700; }
         }
         @keyframes titleReveal {
-          from { letter-spacing: 0.4em; opacity: 0; }
-          to   { letter-spacing: 0.08em; opacity: 1; }
-        }
+  from { letter-spacing: 0.6em; opacity: 0; }
+  to   { letter-spacing: 0.35em; opacity: 1; }
+}
         @keyframes btnPulse {
           0%,100% { box-shadow: 0 0 15px rgba(139,0,0,0.5), inset 0 0 15px rgba(0,0,0,0.3); }
           50%     { box-shadow: 0 0 40px rgba(180,0,0,0.8), 0 0 70px rgba(255,80,0,0.25), inset 0 0 20px rgba(0,0,0,0.4); }
@@ -292,7 +292,7 @@ const styles = {
     fontSize: 'clamp(1.8rem, 4.5vw, 3.2rem)',
     color: '#d4af37',
     margin: '0 0 10px',
-    letterSpacing: '0.08em',
+    letterSpacing: '0.20em',
     textShadow: '0 0 20px rgba(212,175,55,0.6), 0 2px 10px rgba(0,0,0,0.9)',
     transition: 'opacity 0.9s ease, transform 0.9s ease',
     animation: 'titleReveal 1.2s ease forwards',

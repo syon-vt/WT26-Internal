@@ -306,27 +306,27 @@ function Castle({ side }) {
     >
       <rect x="150" y="80" width="100" height="520" fill="#6b7280" />
       <rect x="155" y="85" width="90" height="510" fill="#4b5563" />
-      <rect x="145" y="60" width="20" height="25" fill="#6b7280" />
-      <rect x="170" y="60" width="20" height="25" fill="#6b7280" />
-      <rect x="195" y="60" width="20" height="25" fill="#6b7280" />
-      <rect x="220" y="60" width="20" height="25" fill="#6b7280" />
-      <polygon points="150,60 200,20 250,60" fill="#4a4238" />
+      <rect x="152" y="60" width="20" height="25" fill="#6b7280" />
+<rect x="177" y="60" width="20" height="25" fill="#6b7280" />
+<rect x="202" y="60" width="20" height="25" fill="#6b7280" />
+<rect x="227" y="60" width="20" height="25" fill="#6b7280" />
+     <polygon points="153,60 203,20 253,60" fill="#4a4238" />
       <rect x="195" y="10" width="10" height="15" fill="#d97706" />
       <polygon points="200,0 195,10 205,10" fill="#fbbf24" />
       <rect x="50" y="180" width="90" height="420" fill="#6b7280" />
       <rect x="55" y="185" width="80" height="410" fill="#4b5563" />
-      <rect x="45" y="165" width="18" height="20" fill="#6b7280" />
-      <rect x="68" y="165" width="18" height="20" fill="#6b7280" />
-      <rect x="91" y="165" width="18" height="20" fill="#6b7280" />
-      <rect x="114" y="165" width="18" height="20" fill="#6b7280" />
+      <rect x="52" y="165" width="18" height="20" fill="#6b7280" />
+<rect x="75" y="165" width="18" height="20" fill="#6b7280" />
+<rect x="98" y="165" width="18" height="20" fill="#6b7280" />
+<rect x="121" y="165" width="18" height="20" fill="#6b7280" />
       <polygon points="50,165 95,135 140,165" fill="#4a4238" />
       <rect x="260" y="180" width="90" height="420" fill="#6b7280" />
       <rect x="265" y="185" width="80" height="410" fill="#4b5563" />
-      <rect x="258" y="165" width="18" height="20" fill="#6b7280" />
-      <rect x="281" y="165" width="18" height="20" fill="#6b7280" />
-      <rect x="304" y="165" width="18" height="20" fill="#6b7280" />
-      <rect x="327" y="165" width="18" height="20" fill="#6b7280" />
-      <polygon points="260,165 305,135 350,165" fill="#4a4238" />
+      <rect x="262" y="165" width="18" height="20" fill="#6b7280" />
+<rect x="285" y="165" width="18" height="20" fill="#6b7280" />
+<rect x="308" y="165" width="18" height="20" fill="#6b7280" />
+<rect x="331" y="165" width="18" height="20" fill="#6b7280" />
+      <polygon points="258,165 303,135 348,165" fill="#4a4238" />
       <line x1="150" y1="150" x2="250" y2="150" stroke="#9ca3af" strokeWidth="1.5" opacity="0.4" />
       <line x1="150" y1="220" x2="250" y2="220" stroke="#9ca3af" strokeWidth="1.5" opacity="0.4" />
       <line x1="150" y1="290" x2="250" y2="290" stroke="#9ca3af" strokeWidth="1.5" opacity="0.4" />
@@ -390,8 +390,8 @@ function MagicHat({ showSparkles }) {
       <svg width="100%" height="100%" viewBox="0 0 200 200" preserveAspectRatio="xMidYMid meet">
         <ellipse cx="100" cy="140" rx="90" ry="20" fill="#581c87" />
         <ellipse cx="100" cy="140" rx="85" ry="18" fill="#6b21a8" />
-        <rect x="30" y="130" width="140" height="15" fill="#d97706" rx="3" />
-        <rect x="35" y="132" width="130" height="11" fill="#fbbf24" rx="2" />
+        <rect x="30" y="130" width="140" height="15" fill="#d97706" />
+<rect x="35" y="132" width="130" height="11" fill="#fbbf24" rx="2" />
         <path d="M 50,130 Q 70,50 100,30 Q 130,50 150,130 Z" fill="#6b21a8" />
         <path d="M 55,130 Q 73,55 100,37 Q 127,55 145,130 Z" fill="#7c3aed" />
         <rect x="85" y="125" width="30" height="20" fill="#d97706" rx="3" />
@@ -431,17 +431,17 @@ function Sparkle({ top, left, delay }) {
 }
 
 function ClosedScroll({ delay, position }) {
-  const positions = {
-    'far-left':     { left: '20%', top: '50%' },
-    'left-2':       { left: '28%', top: '45%' },
-    'left-1':       { left: '36%', top: '52%' },
-    'center-left':  { left: '42%', top: '48%' },
-    'center':       { left: '50%', top: '55%' },
-    'center-right': { left: '58%', top: '48%' },
-    'right-1':      { left: '64%', top: '52%' },
-    'right-2':      { left: '72%', top: '45%' },
-    'far-right':    { left: '80%', top: '50%' },
-    'top-center':   { left: '50%', top: '40%' },
+ const positions = {
+    'far-left':     { left: '17%', top: '50%' },
+    'left-2':       { left: '25%', top: '45%' },
+    'left-1':       { left: '33%', top: '52%' },
+    'center-left':  { left: '39%', top: '48%' },
+    'center':       { left: '46%', top: '55%' },
+    'center-right': { left: '54%', top: '48%' },
+    'right-1':      { left: '60%', top: '52%' },
+    'right-2':      { left: '67%', top: '45%' },
+    'far-right':    { left: '74%', top: '50%' },
+    'top-center':   { left: '46%', top: '40%' },
   };
   const pos = positions[position];
 
