@@ -39,28 +39,6 @@ const QuizForm = ({ QUESTIONS, responses, handleInputChange, onSubmit, error, on
             <div className="qf-rod-cap" />
           </div>
 
-<<<<<<< HEAD
-      <form onSubmit={onSubmit}>
-        {QUESTIONS.map((q, idx) => (
-          <div key={idx} className="question-group">
-            <label>{q.text}</label>
-            <div className="radio-group-wrapper">
-              <span className="likert-label min">{q.minLabel}</span>
-              <div className="radio-group">
-                {[1, 2, 3, 4, 5].map(val => (
-                  <label key={val}>
-                    <input
-                      type="radio"
-                      name={`q${idx}`}
-                      value={val}
-                      checked={responses[idx] === val}
-                      onChange={(e) => handleInputChange(idx, e.target.value)}
-                      required
-                    />
-                    {val}
-                  </label>
-                ))}
-=======
           <div className="qf-parchment">
             <div className="qf-parchment-inner">
 
@@ -69,7 +47,6 @@ const QuizForm = ({ QUESTIONS, responses, handleInputChange, onSubmit, error, on
                 <div className="qf-scroll-title">The Ancient Scroll</div>
                 <div className="qf-scroll-sub">Answer truthfully. The Hat is watching.</div>
                 <div className="qf-scroll-runes">ᚠ ᚢ ᚦ ᚨ ᚱ ᚲ ᚷ ᚹ</div>
->>>>>>> 64f8975 (Final)
               </div>
 
               <div className="qf-prog-wrap">

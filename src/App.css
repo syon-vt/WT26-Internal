@@ -9,6 +9,7 @@ body {
   min-height: 100vh;
   background: #000;
 }
+
 .container {
   display: flex;
   flex-direction: column;
@@ -298,8 +299,15 @@ button {
 
 /* Animations */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .container {
@@ -344,7 +352,7 @@ button {
     width: 100%;
   }
 
-  .leaderboard-table th, 
+  .leaderboard-table th,
   .leaderboard-table td {
     padding: 1rem 0.75rem;
     font-size: 0.95rem;
@@ -457,12 +465,12 @@ button {
     flex-wrap: wrap;
     gap: 0.5rem;
   }
-  
+
   .progress-bar-container {
     order: 3;
     flex: 1 1 100%;
   }
-  
+
   .progress-text {
     margin-left: auto;
   }
@@ -581,8 +589,15 @@ button {
 }
 
 @keyframes slideDown {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .matched-names-list {
@@ -606,6 +621,7 @@ button {
   font-style: italic;
   margin: 0;
 }
+
 /* Magical Intro Layout */
 .magical-intro {
   text-align: center;
@@ -630,27 +646,6 @@ button {
   }
 }
 
-<<<<<<< HEAD
-/* Migrated from f1.css */
-*, *::before, *::after {
-  box-sizing: border-box;
-}
-
-.f1-scene {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-}
-
-.scrollable-view {
-  overflow-y: auto;
-  height: 100vh;
-  position: relative;
-}
-=======
 /* Creepy Name Entry Screen */
 .creepy-name-entry {
   position: relative;
@@ -735,28 +730,57 @@ button {
   width: 300px;
   height: 300px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,255,255,0.06), transparent 70%);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.06), transparent 70%);
   filter: blur(35px);
   animation: driftFog 18s infinite ease-in-out;
 }
 
-.fog-1 { top: 10%; left: -10%; }
-.fog-2 { bottom: 15%; right: -10%; animation-duration: 22s; }
-.fog-3 { top: 45%; left: 35%; animation-duration: 26s; }
+.fog-1 {
+  top: 10%;
+  left: -10%;
+}
+
+.fog-2 {
+  bottom: 15%;
+  right: -10%;
+  animation-duration: 22s;
+}
+
+.fog-3 {
+  top: 45%;
+  left: 35%;
+  animation-duration: 26s;
+}
 
 @keyframes driftFog {
-  0%, 100% { transform: translate(0, 0); }
-  25% { transform: translate(40px, -20px); }
-  50% { transform: translate(-20px, 30px); }
-  75% { transform: translate(30px, 10px); }
+
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  25% {
+    transform: translate(40px, -20px);
+  }
+
+  50% {
+    transform: translate(-20px, 30px);
+  }
+
+  75% {
+    transform: translate(30px, 10px);
+  }
 }
 
 @keyframes pulseGlow {
-  0%, 100% {
+
+  0%,
+  100% {
     text-shadow:
       0 0 10px rgba(255, 0, 0, 0.6),
       0 0 20px rgba(255, 0, 0, 0.4);
   }
+
   50% {
     text-shadow:
       0 0 20px rgba(255, 0, 0, 0.9),
@@ -774,4 +798,3 @@ button {
     font-size: 1rem;
   }
 }
->>>>>>> 64f8975 (Final)

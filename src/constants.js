@@ -104,31 +104,31 @@ export const QUESTIONS = [
   },
   {
     text: "I possess the '10 CGPA' energy of someone who hasn't stepped foot in a classroom since 2022",
-    weight: 1.5,
+    weight: 1,
     minLabel: "Trying my best to get that 75",
     maxLabel: "What's a classroom??"
   },
   {
     text: "Rate your zestiness",
-    weight: 1.5,
+    weight: 1,
     minLabel: "Wdym 'Zesty'",
     maxLabel: "ZESTYYYYY 🎀🎀"
   },
   {
     text: "I love my graveyard of half empty plastic bottles",
-    weight: 1.5,
+    weight: 1,
     minLabel: "No i love my room",
     maxLabel: "My room is a monument"
   },
   {
     text: "My default response to a friend describing a life-altering tragedy is 'That’s crazy'",
-    weight: 1.5,
+    weight: 1,
     minLabel: "Communication is so important",
     maxLabel: "That's crazy"
   },
   {
     text: "I have the hand eye coordination of a drunk toddler",
-    weight: 1.5,
+    weight: 1,
     minLabel: "Nah im amazing",
     maxLabel: "Yo that drunk toddler is ME"
   }

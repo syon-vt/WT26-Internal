@@ -34,7 +34,6 @@ function App() {
 
   const calculateSimilarity = (resp) => {
     const scores = MAIN_DATA.map(item => {
-<<<<<<< HEAD
       const distance = item.ans.reduce((sum, val, idx) => {
         return sum + (QUESTIONS[idx].weight * Math.abs(resp[idx] - val));
       }, 0);
@@ -42,18 +41,6 @@ function App() {
     });
     const sorted = scores.sort((a, b) => a.distance - b.distance);
     return sorted[0];
-=======
-      const distance = Math.sqrt(
-        item.ans.reduce(
-          (sum, val, idx) =>
-            sum + QUESTIONS[idx].weight * Math.pow(resp[idx] - val, 2),
-          0
-        )
-      )
-      return { ...item, distance }
-    })
-    return scores.sort((a, b) => a.distance - b.distance)[0]
->>>>>>> 64f8975 (Final)
   }
 
   const handleInputChange = (index, value) => {
