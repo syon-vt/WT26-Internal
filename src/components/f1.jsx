@@ -138,17 +138,18 @@ export default function MagicalIntro({ onFinish }) {
     bottom: '20%',
     left: '50%',
     transform: 'translateX(-50%)',
-    color: '#fbbf24',
-    fontSize: 'clamp(18px, 3vw, 24px)',
-    fontWeight: 'bold',
-    backgroundColor: 'rgba(0,0,0,0.7)',
-    padding: '12px 24px',
-    borderRadius: '40px',
+    color: '#f0c040',
+    fontSize: 'clamp(20px, 3.2vw, 28px)',
+    fontFamily: '"Cinzel Decorative", "Palatino Linotype", "Book Antiqua", serif',
+    fontWeight: '400',
+    letterSpacing: '0.08em',
+    textShadow: '0 0 18px rgba(240, 192, 64, 0.55), 0 0 6px rgba(240, 192, 64, 0.3)',
     zIndex: 40,
     animation: 'pulseText 1.5s ease-in-out infinite',
     whiteSpace: 'nowrap',
+    pointerEvents: 'none',
   }}>
-     Tap on the Hat to explore 
+    Tap on the Hat to Explore
   </div>
 )}
       {showScrolls && !scrollsDisappear && (
