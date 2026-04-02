@@ -79,7 +79,7 @@ const QuizForm = ({ QUESTIONS, responses, handleInputChange, onSubmit, error, on
                     </div>
 
                     <div className="qf-likert">
-                      <span className="qf-l-label">{q.minLabel}</span>
+                      <div className="qf-options-row"><span className="qf-l-label qf-l-min">{q.minLabel}</span>
                       <div className="qf-options">
                         {[1, 2, 3, 4, 5].map(val => (
                           <div
@@ -92,7 +92,7 @@ const QuizForm = ({ QUESTIONS, responses, handleInputChange, onSubmit, error, on
                           </div>
                         ))}
                       </div>
-                      <span className="qf-l-label">{q.maxLabel}</span>
+                      <span className="qf-l-label qf-l-max">{q.maxLabel}</span></div>
                     </div>
 
                     <div className="qf-divider" />
