@@ -1,14 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './ResultCard.css';
 
-const SOULS = [
-  "A kindred spirit of aesthetic chaos and pure vibes.",
-  "A chaotic mastermind with unmatched energy.",
-  "A gentle soul hiding elite survival instincts.",
-  "A multitasking legend with secret chaos powers.",
-  "A philosophical gremlin in disguise.",
-  "A wildcard who keeps everyone on their toes.",
-];
+
 
 const ResultCard = ({ topMatch, onStartOver, onViewLeaderboard }) => {
   const [revealed, setRevealed] = useState(false);
@@ -20,7 +13,6 @@ const ResultCard = ({ topMatch, onStartOver, onViewLeaderboard }) => {
     return () => { clearTimeout(t1); clearTimeout(t2); };
   }, []);
 
-  const soul = SOULS[(topMatch.id - 1) % SOULS.length];
 
   return (
     <div className="rc-screen">
@@ -62,7 +54,7 @@ const ResultCard = ({ topMatch, onStartOver, onViewLeaderboard }) => {
           <span className="rc-divider-rune">ᚹ</span>
         </div>
 
-        <p className="rc-soul">{soul}</p>
+        <p className="rc-soul">{topMatch.blurb}</p>
 
         <div className={`rc-buttons ${showButtons ? 'rc-buttons--visible' : ''}`}>
           <button className="rc-btn rc-btn--ghost" onClick={onStartOver}>

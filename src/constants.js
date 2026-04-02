@@ -10,17 +10,78 @@ import varshithPhoto from './assets/profile/Varshith.JPG';
 import amanPhoto from './assets/profile/Aman.JPG';
 
 export const MAIN_DATA = [
-  { id: 1,  name: "Radhika",       photo: radhikaPhoto,  blurb: "Curates the perfect aesthetic and then sends the whole vibe to voicemail. Deeply principled, quietly chaotic, and significantly more haunted than she lets on.",                                              ans: [5, 1, 5, 5, 3, 1, 1, 4, 1, 1, 1, 1, 1, 1, 5, 1, 3, 1, 1, 1] },
-  { id: 2,  name: "Aditya Shukla", photo: adityaSPhoto,  blurb: "The menace who rehearsed the argument, won it, and still feels bad about it. Chaotic with impeccable timing and a USB drive policy that is genuinely alarming.",                                           ans: [2, 5, 5, 5, 1, 3, 5, 5, 3, 1, 5, 5, 5, 5, 1, 3, 3, 1, 5, 1] },
-  { id: 3,  name: "Bhavya",        photo: bhavyaPhoto,   blurb: "Looks calm, is internally writing the sequel. Would survive the horror movie, hang the haunted mirror, and still have the most organised shelf in the building.",                                               ans: [4, 1, 4, 3, 5, 2, 1, 4, 1, 1, 2, 2, 4, 4, 5, 3, 4, 4, 4, 1] },
-  { id: 4,  name: "Reenu",         photo: reenuPhoto,    blurb: "Operates at full power but makes it look effortless. The kind of person who'd negotiate the demon deal, get the good amenities, and still leave five stars.",                                                   ans: [4, 3, 4, 5, 1, 4, 3, 1, 1, 3, 1, 4, 5, 5, 5, 5, 3, 3, 2, 3] },
-  { id: 5,  name: "Aditya Acharya",photo: adityaAPhoto,  blurb: "A measured soul with secret gremlin energy just below the surface. Would think before plugging in the USB, then plug it in anyway because curiosity always wins.",                                              ans: [3, 4, 2, 4, 2, 2, 3, 4, 4, 2, 5, 3, 5, 5, 4, 3, 3, 2, 4, 2] },
-  { id: 6,  name: "Sarah",         photo: sarahPhoto,    blurb: "The wildcard the universe did not ask for but absolutely needed. Emotionally unavailable to phone calls, emotionally over-invested in vibes. A gift to the cosmos.",                                             ans: [4, 1, 5, 2, 3, 5, 3, 5, 1, 5, 2, 4, 4, 2, 5, 1, 3, 5, 3, 1] },
-  { id: 7,  name: "Rujin",         photo: rujinPhoto,    blurb: "A top-of-class aura running entirely on muscle memory and general audacity. The alibi, the mastermind, and somehow also the most laid-back person in the room.",                                                ans: [3, 2, 4, 5, 3, 4, 1, 1, 3, 1, 3, 5, 5, 5, 5, 1, 4, 1, 2, 3] },
-  { id: 8,  name: "Nitin",         photo: nitinPhoto,    blurb: "Fully unhinged, fully committed, zero regrets. Would fight the dog, plug in the USB, hang the mirror, and call that a productive Tuesday. Pure chaotic excellence.",                                            ans: [4, 1, 5, 5, 5, 5, 1, 1, 5, 5, 5, 5, 5, 5, 5, 5, 3, 1, 1, 1] },
-  { id: 9,  name: "Varshith",      photo: varshithPhoto, blurb: "A passive-aggressive ghost in the making, moving things 1cm daily and leaving no evidence. The courtroom in his head has a full jury and excellent acoustics.",                                                  ans: [1, 1, 5, 1, 1, 1, 5, 1, 5, 5, 1, 5, 5, 5, 5, 5, 3, 5, 5, 1] },
-  { id: 10, name: "Aman",          photo: amanPhoto,     blurb: "Deeply relatable to leftover food. Has his people, his data structures, and a slow nod that somehow communicates everything. The 'damn. anyway—' energy is real.",                                              ans: [1, 4, 3, 5, 4, 3, 2, 2, 1, 5, 3, 5, 5, 4, 5, 5, 1, 1, 4, 4] }
+  {
+    id: 1,
+    name: "Radhika",
+    photo: radhikaPhoto,
+    blurb: "You'll smile warmly at someone's work and then give them a zero without blinking. Iconic, honestly.",
+    ans: [5, 1, 5, 5, 3, 1, 1, 4, 1, 1, 1, 1, 1, 1, 5, 1, 3, 1, 1, 1]
+  },
+  {
+    id: 2,
+    name: "Aditya Shukla",
+    photo: adityaSPhoto,
+    blurb: "Holy baddie! Leg days are non-negotiable, “that's crazy” is your entire personality, and has that splash of zesty energy.",
+    ans: [2, 5, 5, 5, 1, 3, 5, 5, 3, 1, 5, 5, 5, 5, 1, 3, 3, 1, 5, 1]
+  },
+  {
+    id: 3,
+    name: "Bhavya",
+    photo: bhavyaPhoto,
+    blurb: "Slow to warm up, impossible to shake once you do. You pick your people carefully and then let them change you. A total teddy bear on the inside. That's a rare thing.",
+    ans: [4, 1, 4, 3, 5, 2, 1, 4, 1, 1, 2, 2, 4, 4, 5, 3, 4, 4, 4, 1]
+  },
+  {
+    id: 4,
+    name: "Reenu",
+    photo: reenuPhoto,
+    blurb: "Never in class, somehow acing everything, and lowkey convinced you were born in the wrong country. You're everybody's mum whether they asked for it or not.",
+    ans: [4, 3, 4, 5, 1, 4, 3, 1, 1, 3, 1, 4, 5, 5, 5, 5, 3, 3, 2, 3]
+  },
+  {
+    id: 5,
+    name: "Aditya Acharya",
+    photo: adityaAPhoto,
+    blurb: "You're reserved and nonchalant until you get close to someone. After your vibes match, you both go crazy.",
+    ans: [3, 4, 2, 4, 2, 2, 3, 4, 4, 2, 5, 3, 5, 5, 4, 3, 3, 2, 4, 2]
+  },
+  {
+    id: 6,
+    name: "Sarah",
+    photo: sarahPhoto,
+    blurb: "You get things done, no compromises. People see your reaction on your face before you even open your mouth.",
+    ans: [4, 1, 5, 2, 3, 5, 3, 5, 1, 5, 2, 4, 4, 2, 5, 1, 3, 5, 3, 1]
+  },
+  {
+    id: 7,
+    name: "Rujin",
+    photo: rujinPhoto,
+    blurb: "Gotham got a billionaire in a cape. GDG got you. We won.",
+    ans: [3, 2, 4, 5, 3, 4, 1, 1, 3, 1, 3, 5, 5, 5, 5, 1, 4, 1, 2, 3]
+  },
+  {
+    id: 8,
+    name: "Nitin",
+    photo: nitinPhoto,
+    blurb: "Seeing you is rarer than witnessing a blue moon, but you've secretly got us covered.",
+    ans: [4, 1, 5, 5, 5, 5, 1, 1, 5, 5, 5, 5, 5, 5, 5, 5, 3, 1, 1, 1]
+  },
+  {
+    id: 9,
+    name: "Varshith",
+    photo: varshithPhoto,
+    blurb: "Nothing happens around without you knowing cause you got that aura. You also love all the tea.",
+    ans: [1, 1, 5, 1, 1, 1, 5, 1, 5, 5, 1, 5, 5, 5, 5, 5, 3, 5, 5, 1]
+  },
+  {
+    id: 10,
+    name: "Aman",
+    photo: amanPhoto,
+    blurb: "A perfectionist at heart. Anyone standing between you and getting it right has made a very poor life decision.",
+    ans: [1, 4, 3, 5, 4, 3, 2, 2, 1, 5, 3, 5, 5, 4, 5, 5, 1, 1, 4, 4]
+  }
 ];
+
 export const QUESTIONS = [
   {
     text: "I would sell my ethics for a really good aesthetic",
