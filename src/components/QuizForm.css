@@ -48,7 +48,7 @@
 }
 
 .qf-rod-bar {
-  flex: 1;
+
   height: 18px;
   background: linear-gradient(
     180deg,
@@ -239,7 +239,7 @@
   color: #e8d5b0;
   margin: 0;
   line-height: 1.5;
-  flex: 1;
+
 }
 
 .qf-q-done {
@@ -256,15 +256,18 @@
   align-items: center;
   gap: 10px;
   margin-bottom: 18px;
-  flex-wrap: wrap;
+
+  justify-content: center;
+  width: 100%;
 }
 
 .qf-l-label {
   font-family: 'Crimson Text', serif;
   font-size: 0.76rem;
-  color: rgba(200, 160, 80, 0.5);
+  color: rgba(200, 160, 80, 0.85);
   font-style: italic;
-  min-width: 50px;
+  min-width: 80px;
+  max-width: 80px;
 }
 
 .qf-l-label:last-child {
@@ -274,7 +277,7 @@
 .qf-options {
   display: flex;
   gap: 8px;
-  flex: 1;
+
   justify-content: center;
 }
 
@@ -496,5 +499,94 @@
   .qf-parchment-inner { padding: 24px 16px 32px; }
   .qf-options { gap: 5px; }
   .qf-dot { width: 26px; height: 26px; }
-  .qf-l-label { display: none; }
+  /* .qf-l-label hidden removed */
+}
+
+/* Min/Max label + options layout */
+.qf-likert {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  width: 100% !important;
+}
+
+.qf-options-row {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  gap: 8px !important;
+}
+
+.qf-l-label {
+  font-family: 'Crimson Text', serif;
+  font-size: 0.76rem;
+  color: rgba(200, 160, 80, 0.85);
+  font-style: italic;
+  white-space: nowrap !important;
+  flex-shrink: 0;
+}
+
+.qf-l-min { text-align: left !important; }
+.qf-l-max { text-align: right !important; }
+
+.qf-options {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  gap: 8px !important;
+  justify-content: center !important;
+  flex-shrink: 0;
+}
+
+/* Fix right label width */
+.qf-l-max {
+  white-space: normal !important;
+  text-align: right !important;
+  max-width: 150px !important;
+  line-height: 1.3 !important;
+}
+.qf-l-min {
+  white-space: normal !important;
+  text-align: left !important;
+  max-width: 150px !important;
+  line-height: 1.3 !important;
+}
+
+/* Fix rod caps to left and right edges */
+.qf-rod-bar {
+  flex: 1 !important;
+}
+
+/* Make rod caps bigger */
+.qf-rod-cap {
+  width: 36px !important;
+  height: 36px !important;
+}
+
+/* Fix question header alignment */
+.qf-q-header {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 12px !important;
+}
+.qf-q-num {
+  flex-shrink: 0 !important;
+  width: 28px !important;
+}
+.qf-q-text {
+  flex: 1 !important;
+  margin: 0 !important;
+}
+
+/* Fix options alignment across questions */
+.qf-l-min {
+  width: 150px !important;
+  min-width: 150px !important;
+}
+.qf-l-max {
+  width: 150px !important;
+  min-width: 150px !important;
 }
